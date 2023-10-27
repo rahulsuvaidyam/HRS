@@ -1,5 +1,4 @@
 import { useContext, type FC } from 'react';
-import Button from '../../Component/Button';
 import { Formik, Form, Field } from "formik";
 import Http from '../../Services/Http';
 import { DataContext } from '../../Context/DataProvider';
@@ -70,9 +69,7 @@ const Login: FC<LoginProps> = () => {
                             Enter Password
                         </label>
                     </div>
-                    <div className="pt-2">
-                        <Button title='Sign In' w='full' bg='blue-500' text='white'/>
-                    </div>
+                    <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Sign In</button>
                 </Form>
             </Formik>
         </>

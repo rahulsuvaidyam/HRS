@@ -24,7 +24,7 @@ const Navbar: FC<NavbarProps> = () => {
 
     return (
         <>
-            <div className="w-full fixed top-0 h-12 md:h-14 bg-gray-200 shadow-sm">
+            <div className="w-full fixed top-0 h-12 md:h-14 z-10 bg-gray-200 shadow-sm">
                 <div className="px-2 md:px-8 flex justify-between items-center h-full w-full">
                     <Link to={'/'} className='text-xl font-medium'>HRS</Link>
                     <div className="flex items-center gap-2 md:gap-6">

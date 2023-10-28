@@ -104,6 +104,10 @@ const Register: FC<RegisterProps> = () => {
                                 <Field id="female" value='FEMALE' name="gender" type="radio" className="h-3 w-3 border-gray-300 text-indigo-600 focus:ring-indigo-600" />
                                 <label htmlFor="female" className="block text-sm font-medium leading-6 text-gray-600">Female</label>
                             </div>
+                            <div className="flex items-center gap-x-2">
+                                <Field id="other" value='OTHER' name="gender" type="radio" className="h-3 w-3 border-gray-300 text-indigo-600 focus:ring-indigo-600" />
+                                <label htmlFor="other" className="block text-sm font-medium leading-6 text-gray-600">Other</label>
+                            </div>
                         </div>
                     </div>
                     <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Sign Up</button>

@@ -76,7 +76,7 @@ const Cart: FC<CartProps> = () => {
             <div className="w-full lg:w-2/5 mt-4 h-3/5 border bg-white block lg:hidden">
               <div className="w-full py-4 px-4 border-b font-semibold text-gray-700">PRICE DETAILS</div>
             </div>
-            <div className="sticky bottom-0 w-full bg-gray-50 h-14 flex items-center justify-end px-4">
+            <div className="sticky bottom-14 w-full bg-gray-50 h-14 flex items-center justify-end px-4">
                <button className='border px-8 py-2 bg-blue-500 text-white font-medium'>Place Order</button>
             </div>
             {/*  */}

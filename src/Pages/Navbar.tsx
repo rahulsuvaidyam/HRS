@@ -1,19 +1,21 @@
-import { useContext, type FC, useEffect, useState, Fragment } from 'react';
+import { useContext, type FC, useEffect, Fragment } from 'react';
 import { DataContext } from '../Context/DataProvider';
 import { IoMdBasket } from 'react-icons/io'
 import {BiChevronDown} from 'react-icons/bi'
 import { Menu, Transition } from '@headlessui/react'
 import { Link } from 'react-router-dom';
+import avatarM from '../Assets/UserImage/avatarm.png'
+import avatarF from '../Assets/UserImage/avatarf.jpeg'
 
 interface NavbarProps { }
 
 const Navbar: FC<NavbarProps> = () => {
-    const [userDetails, setUserDetails] = useState<any>({})
-    const { setLogInPage, logInPage,setIsRender,isRender } = useContext(DataContext)
+    const { setLogInPage, logInPage,setIsRender,isRender , userDetails, 
+        setUserDetails} = useContext(DataContext)
 
     const Signout =()=>{
-      const userDetails =  sessionStorage.clear()
-      setUserDetails(userDetails)
+      const userDetail =  sessionStorage.clear()
+      setUserDetails(userDetail)
      setIsRender(!isRender)
     }
 
@@ -27,13 +29,13 @@ const Navbar: FC<NavbarProps> = () => {
             <div className="w-full fixed top-0 h-12 md:h-14 z-10 bg-gray-200 shadow-sm">
                 <div className="px-2 md:px-8 flex justify-between items-center h-full w-full">
                     <Link to={'/'} className='text-xl font-medium'>HRS</Link>
-                    <div className="flex items-center gap-2 md:gap-6">
+                    <div className="flex items-center gap-3 md:gap-6">
                         {userDetails?.name ? <>
                             <Menu as="div" className="relative order-2 md:order-1 inline-block text-left">
                                 <div><Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-full md:rounded-md bg-white md:px-3 md:py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                                     <p className='hidden md:block'><span className='flex gap-1 items-center'>{userDetails?.name}<BiChevronDown className='text-xl'/></span></p>
                                     <div className="w-7 h-7 block md:hidden ">
-                                        <p className='flex items-center justify-center h-full'>{userDetails?.name?.charAt(0)?.toUpperCase()}</p>
+                                    <img className='rounded-full' src={userDetails.gender ==='MALE'?avatarM:avatarF} alt="" />
                                         </div>
                                     </Menu.Button>
                                 </div>
@@ -61,7 +63,10 @@ const Navbar: FC<NavbarProps> = () => {
                         </> :
                             <button onClick={() => setLogInPage(!logInPage)} className='hover:bg-blue-400 px-1 md:px-4 py-1 order-2 md:order-1 hover:text-white rounded-md text-sm md:text-base'>Sign In</button>
                         }
-                        <Link className='order-1 md:order-2' to={'/cart'}><IoMdBasket className='text-2xl  text-gray-600 cursor-pointer' /></Link>
+                        <Link className='order-1 md:order-2 relative' to={'/cart'}>
+                            <IoMdBasket className='text-2xl  text-gray-600 cursor-pointer' />
+                             <span className='w-4 h-4 rounded-full absolute -top-1 -right-2 flex items-center justify-center bg-blue-500 text-xs font-bold text-white'>2</span>
+                        </Link>
                     </div>
                 </div>
             </div>

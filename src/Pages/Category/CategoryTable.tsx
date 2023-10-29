@@ -3,9 +3,9 @@ import { MdDelete, MdEdit } from 'react-icons/md'
 import Http from '../../Services/Http';
 import { toast } from 'react-toastify';
 
-interface CategoryProps { }
+interface CategoryTableProps { }
 
-const Category: FC<CategoryProps> = () => {
+const CategoryTable: FC<CategoryTableProps> = () => {
 
     const [category, setcategory] = useState<any>([])
 //    console.log(category)
@@ -68,4 +68,4 @@ const Category: FC<CategoryProps> = () => {
     );
 }
 
-export default Category;
+export default CategoryTable;

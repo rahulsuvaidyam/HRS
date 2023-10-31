@@ -34,7 +34,7 @@ const Cart: FC<CartProps> = () => {
         <div className="flex flex-col lg:flex-row gap-3 h-full lg:pt-4">
           <div className="w-full lg:w-3/5 overflow-y-scroll scrollbar-none h-full bg-white border lg:rounded-lg relative">
             <div className="flow-root p-3">
-              <ul role="list" className="-my-6 divide-y divide-gray-200">
+              <ul  className="-my-6 divide-y divide-gray-200">
                 {products.map((product) => (
                   <li key={product.id} className="flex py-6">
                     <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200">

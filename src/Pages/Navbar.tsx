@@ -18,7 +18,9 @@ const Navbar: FC<NavbarProps> = () => {
     }
 
     useEffect(() => {
+        // eslint-disable-next-line
         userDetails = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}')
+        // eslint-disable-next-line
     }, [isRender])
 
     return (
@@ -27,7 +29,7 @@ const Navbar: FC<NavbarProps> = () => {
                 <div className="px-2 md:px-8 flex justify-between items-center h-full w-full">
                     <Link to={'/'} className='text-xl font-medium cursor-pointer'>HRS</Link>
                     <div className="flex items-center gap-3 md:gap-6">
-                        {userDetails?.role === 'ADMIN' && <Link to='/product' className='border px-3 py-2 font-medium text-sm bg-white rounded-md'>Product List</Link>}
+                        {userDetails?.role === 'ADMIN' && <Link to='/dashboard' className='border px-3 py-2 font-medium text-sm bg-white rounded-md'>Product List</Link>}
                         {userDetails?.name ? <>
                             <Menu as="div" className="relative order-2 md:order-1 inline-block text-left">
                                 <div><Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-full md:rounded-md bg-white md:px-3 md:py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">

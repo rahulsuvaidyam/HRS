@@ -1,13 +1,16 @@
-import { useEffect, type FC, useState } from 'react';
+import { useState, type FC, useContext, useEffect } from 'react';
 import { MdDelete, MdEdit } from 'react-icons/md'
 import Http from '../../Services/Http';
 import { toast } from 'react-toastify';
+import {BiPlus} from 'react-icons/bi'
+import { DataContext } from '../../Context/DataProvider';
+import PopUp from '../../Components/PopUp';
 
-interface CategoryTableProps { }
+interface CategoriesProps {}
 
-const CategoryTable: FC<CategoryTableProps> = () => {
-
+const Categories: FC<CategoriesProps> = () => {
     const [category, setcategory] = useState<any>([])
+    const {setOpenPopUP} = useContext(DataContext)
 //    console.log(category)
     useEffect(() => {
         const getCategory = async() => {
@@ -18,16 +21,17 @@ const CategoryTable: FC<CategoryTableProps> = () => {
                 });
                 // toast.success(response?.data?.message)
                 setcategory(response?.data?.data)
+                setOpenPopUP(false)
               } catch ( error:any) {
                 toast.error(error.response?.data?.message)
               }
         }
         getCategory();
+        // eslint-disable-next-line
     }, [])
     
-
     return (
-        <> 
+        <>
          <div className="relative overflow-x-auto px-2">
                 <table className="w-full text-sm text-left text-gray-500 ">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50">
@@ -62,10 +66,13 @@ const CategoryTable: FC<CategoryTableProps> = () => {
                       
                     </tbody>
                 </table>
+                <div onClick={()=>setOpenPopUP(true)} className='w-14 h-14 flex items-center cursor-pointer justify-center rounded-full border-2 fixed bottom-6 right-6'>
+                    <BiPlus className='text-3xl text-gray-600'/>
+                </div>
             </div>
-
+           <PopUp title='Create Category'/>
         </>
     );
 }
 
-export default CategoryTable;
+export default Categories;

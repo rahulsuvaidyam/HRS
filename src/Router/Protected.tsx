@@ -12,6 +12,7 @@ const Protected = (props:any) => {
             Navigate('/')
             setLogInPage(true)
         }
+        // eslint-disable-next-line
     }, [isRender,login]);
 
     return (

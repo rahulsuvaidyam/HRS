@@ -5,11 +5,13 @@ import {BiPlus} from 'react-icons/bi'
 import { DataContext } from '../../Context/DataProvider';
 import Http from '../../Services/Http';
 import PopUp from '../../Components/PopUp';
+import Spinner from '../../Components/Loader/Spinner';
 
 interface ProductProps {}
 
 const Product: FC<ProductProps> = () => {
     const [product, setProduct] = useState<any>([])
+    let [loading, setLoading] = useState<boolean>(true);
     const {setOpenPopUP} = useContext(DataContext)
 //    console.log(category)
     useEffect(() => {
@@ -22,6 +24,9 @@ const Product: FC<ProductProps> = () => {
                 // toast.success(response?.data?.message)
                 setProduct(response?.data?.data)
                 setOpenPopUP(false)
+                setTimeout(() => {
+                    setLoading(false)
+                }, 1000);
               } catch ( error:any) {
                 toast.error(error.response?.data?.message)
               }
@@ -31,6 +36,8 @@ const Product: FC<ProductProps> = () => {
     }, [])
     return (
         <>
+         {loading===true?<Spinner loading={loading}/>
+        :<>
          <div className="relative overflow-x-auto px-2">
                 <table className="w-full text-sm text-left text-gray-500 ">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50">
@@ -70,6 +77,7 @@ const Product: FC<ProductProps> = () => {
                 </div>
             </div>
            <PopUp title='Create Product'/>
+           </>}
         </>
     );
 }

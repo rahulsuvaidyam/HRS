@@ -5,6 +5,8 @@ type DataContextValue = {
   setLogInPage: React.Dispatch<React.SetStateAction<boolean>>
   isRender:boolean
   setIsRender:React.Dispatch<React.SetStateAction<boolean>>
+  openPopUP:boolean
+   setOpenPopUP:React.Dispatch<React.SetStateAction<boolean>>
   
 };
 
@@ -16,6 +18,7 @@ type DataProviderProps = {
 const DataProvider = ({ children }: DataProviderProps) => {
   const [logInPage, setLogInPage] = useState(false);
   const [isRender, setIsRender] = useState(false);
+  const [openPopUP, setOpenPopUP] = useState(false)
  
  
 
@@ -25,6 +28,8 @@ const DataProvider = ({ children }: DataProviderProps) => {
     setLogInPage,
     isRender,
     setIsRender, 
+    openPopUP, 
+    setOpenPopUP
   };
   return (
     <DataContext.Provider value={value}>

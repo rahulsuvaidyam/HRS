@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect } from 'react';
+import { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from '../Home/Home';
 import Profile from '../Pages/Profile/Profile';
@@ -6,33 +6,30 @@ import Navbar from '../Pages/Navbar';
 import Protected from './Protected';
 import Cart from '../Pages/Cart/Cart';
 import Auth from '../Auth/Auth';
-import ProductListing from '../Pages/ProductList/ProductListing';
-import { DataContext } from '../Context/DataProvider';
-import CategoryTable from '../Pages/Category/CategoryTable';
 import ProductList from '../Pages/ProductList/ProductList';
+import Categories from '../Dashboard/Categories/Categories';
+import Dashboard from '../Dashboard/DashBoard';
+import Product from '../Dashboard/Products/Products';
 
 interface RouterProps { }
 
 const Router: FC<RouterProps> = () => {
-  const {isRender} = useContext(DataContext)
-  let userDetails: any = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}')
-  useEffect(() => {
-    userDetails = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}')
-}, [isRender])
+
   return (
     <>
       <div className="w-full h-screen">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Protected Component={Profile}/>} />
-          <Route path="/cart" element={<Cart/>} />
-          <Route path="/productlist/:category" element={<ProductList/>} />
-          <Route path="/product" element={userDetails?.role === 'ADMIN'?<ProductListing/>:''} >
-           <Route path="category" element={<CategoryTable/>} />
+          <Route path="/profile" element={<Protected Component={Profile} />} />
+          <Route path="/cart" element={<Protected Component={Cart} />} />
+          <Route path="/productlist/:category" element={<ProductList />} />
+          <Route path="/dashboard" element={<Protected Component={Dashboard} />} >
+            <Route path="category" element={<Protected Component={Categories} />} />
+            <Route path="product" element={<Product />} />
           </Route>
         </Routes>
-        <Auth/>
+        <Auth />
       </div>
     </>
   );

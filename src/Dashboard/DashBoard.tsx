@@ -1,10 +1,10 @@
 import type { FC } from 'react';
-import LeftBar from '../../Components/LeftBar';
+import LeftBar from '../Components/LeftBar';
 import { Outlet } from 'react-router-dom';
 
-interface ProductListingProps {}
+interface DashboardProps {}
 
-const ProductListing: FC<ProductListingProps> = () => {
+const Dashboard: FC<DashboardProps> = () => {
     return (
         <>
         <div className="pt-12 md:pt-14 w-full h-full flex ">
@@ -17,4 +17,4 @@ const ProductListing: FC<ProductListingProps> = () => {
     );
 }
 
-export default ProductListing;
+export default Dashboard;

@@ -12,7 +12,7 @@ const override: CSSProperties = {
 const Spinner: FC<SpinnerProps> = ({loading}) => {
     return (
         <>
-        <div className="w-full h-full inset-0 bg-gray-200 bg-opacity-75 transition-opacity flex items-center justify-center">
+        <div className="w-full h-full inset-0 bg-gray-200 bg-opacity-40 transition-opacity flex items-center justify-center">
         <RingLoader color="#36d7b7" 
          loading={loading}
          cssOverride={override}

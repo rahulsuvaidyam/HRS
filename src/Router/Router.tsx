@@ -10,6 +10,8 @@ import ProductList from '../Pages/ProductList/ProductList';
 import Categories from '../Dashboard/Categories/Categories';
 import Dashboard from '../Dashboard/DashBoard';
 import Product from '../Dashboard/Products/Products';
+import ProductDetails from '../Pages/ProductList/ProductDetails';
+import UserProtected from './UserProtected';
 
 interface RouterProps { }
 
@@ -24,9 +26,10 @@ const Router: FC<RouterProps> = () => {
           <Route path="/profile" element={<Protected Component={Profile} />} />
           <Route path="/cart" element={<Protected Component={Cart} />} />
           <Route path="/productlist/:category" element={<ProductList />} />
-          <Route path="/dashboard" element={<Protected Component={Dashboard} />} >
-            <Route path="category" element={<Protected Component={Categories} />} />
-            <Route path="product" element={<Product />} />
+          <Route path="/productdetails/:product" element={<ProductDetails />} />
+          <Route path="/dashboard" element={<UserProtected Component={Dashboard} />} >
+            <Route path="category" element={<UserProtected Component={Categories} />} />
+            <Route path="product" element={<UserProtected Component={Product} />} />
           </Route>
         </Routes>
         <Auth />

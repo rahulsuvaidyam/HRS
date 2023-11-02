@@ -12,7 +12,7 @@ interface CategoriesProps {}
 const Categories: FC<CategoriesProps> = () => {
     const [category, setcategory] = useState<any>([])
     let [loading, setLoading] = useState<boolean>(true);
-    const {setOpenPopUP} = useContext(DataContext)
+    const {setOpenPopUP,setCategoryEdit} = useContext(DataContext)
 //    console.log(category)
     useEffect(() => {
         const getCategory = async() => {
@@ -33,7 +33,26 @@ const Categories: FC<CategoriesProps> = () => {
         getCategory();
         // eslint-disable-next-line
     }, [])
-    
+    const edit =(e:any)=>{
+        setOpenPopUP(true)
+        setCategoryEdit(e)
+    }
+    const Delete = async(e:any)=>{
+        setLoading(true)
+        try {
+            const response = await Http({
+              url: '/category',
+              method: 'delete',
+              data:{_id:e}
+            });
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000);
+            toast.success(response?.data?.message)
+          } catch ( error:any) {
+            toast.error(error.response?.data?.message)
+          }
+    }
     return (
         <>
         {loading===true?<Spinner loading={loading}/>
@@ -64,8 +83,8 @@ const Categories: FC<CategoriesProps> = () => {
                                   {e?.name}
                               </td>
                               <td className="px-6 py-3 flex gap-2">
-                                  <MdDelete className='text-red-500 text-lg cursor-pointer' />
-                                  <MdEdit className='text-yellow-500 text-lg cursor-pointer' />
+                                  <MdDelete onClick={()=>Delete(e._id)} className='text-red-500 text-lg cursor-pointer' />
+                                   <MdEdit onClick={()=>edit(e)} className='text-yellow-500 text-lg cursor-pointer' />
                               </td>
   
                           </tr>

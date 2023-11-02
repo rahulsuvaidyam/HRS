@@ -6,7 +6,11 @@ type DataContextValue = {
   isRender:boolean
   setIsRender:React.Dispatch<React.SetStateAction<boolean>>
   openPopUP:boolean
-   setOpenPopUP:React.Dispatch<React.SetStateAction<boolean>>
+  setOpenPopUP:React.Dispatch<React.SetStateAction<boolean>>
+  categoryEdit:any
+  setCategoryEdit:React.Dispatch<React.SetStateAction<any>>
+  productEdit:any
+  setproductEdit:React.Dispatch<React.SetStateAction<any>>
   
 };
 
@@ -19,6 +23,8 @@ const DataProvider = ({ children }: DataProviderProps) => {
   const [logInPage, setLogInPage] = useState(false);
   const [isRender, setIsRender] = useState(false);
   const [openPopUP, setOpenPopUP] = useState(false)
+  const [categoryEdit, setCategoryEdit] = useState({})
+  const [productEdit, setproductEdit] = useState({})
  
  
 
@@ -29,7 +35,11 @@ const DataProvider = ({ children }: DataProviderProps) => {
     isRender,
     setIsRender, 
     openPopUP, 
-    setOpenPopUP
+    setOpenPopUP,
+    categoryEdit, 
+    setCategoryEdit,
+    setproductEdit,
+    productEdit
   };
   return (
     <DataContext.Provider value={value}>

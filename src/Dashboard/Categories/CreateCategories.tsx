@@ -10,17 +10,33 @@ import Image from '../../Components/FormControl/Image';
 interface CreateCategoriesProps { }
 interface FormValues {
     name: string;
-    image: string;
+    // image: string;
 }
 
-const initialValues: FormValues = {
-    name: "",
-    image: "",
-};
 const CreateCategories: FC<CreateCategoriesProps> = () => {
-    const [image, setImage] = useState<any>()
-    const {setOpenPopUP} = useContext(DataContext)
+    const {setOpenPopUP,categoryEdit} = useContext(DataContext)
+    const [image, setImage] = useState<any>(categoryEdit?.image?._id ?? '' )
+    const initialValues: FormValues = {
+        name: categoryEdit?.name ||"",
+        // image: categoryEdit?.image ||"",
+    };
     const onsubmit = async (values: any) => {
+        if(categoryEdit?.name){
+            values['image'] = image;
+            values['_id'] = categoryEdit?._id
+            try {
+                const response = await Http({
+                    url: '/category',
+                    method: 'put',
+                    data: values
+                });
+                toast.success(response.data?.message)
+                setOpenPopUP(false)
+            } catch (error: any) {
+                toast.error(error.response.data?.message)
+            }
+        }else{
+            
         values['image'] = image;
         try {
             const response = await Http({
@@ -33,6 +49,7 @@ const CreateCategories: FC<CreateCategoriesProps> = () => {
         } catch (error: any) {
             toast.error(error.response.data?.message)
         }
+    }
     }
     const uploadImage = async(e:any)=>{
         // console.log(e.target.file)
@@ -59,7 +76,7 @@ const CreateCategories: FC<CreateCategoriesProps> = () => {
                 <Form className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <Text name='name' label='Enter Name'/>
                     <Image onImageUpload={uploadImage}/>
-                    <button type='submit' disabled={image?false:true} className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Save</button>
+                    <button type='submit' disabled={image?false:true} className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>{categoryEdit?.name?'Update':'Save'}</button>
                 </Form>
             </Formik>
         </>

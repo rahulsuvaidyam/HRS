@@ -21,42 +21,45 @@ interface FormValues {
 const initialValues: FormValues = {
     name: "",
     email: "",
-    phone:"",
+    phone: "",
     gender: "",
     password: "",
 };
 
 
 const Register: FC<RegisterProps> = () => {
-    const {setLogInPage} = useContext(DataContext)
-    const onsubmit = async(values: any) => {
+    const { setLogInPage } = useContext(DataContext)
+    const onsubmit = async (values: any) => {
         try {
             const response = await Http({
-              url: '/auth/register',
-              method: 'post',
-              data: values
+                url: '/auth/register',
+                method: 'post',
+                data: values
             }, true);
             toast.success(response.data?.message)
             setLogInPage(false)
-          } catch ( error:any) {
+        } catch (error: any) {
             toast.error(error.response.data?.message)
-          }
+        }
     }
     return (
         <>
-            <Formik
-                initialValues={initialValues}
-                //   validate={validate}
-                onSubmit={onsubmit}>
-                <Form className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                   <Text name='name' label='Enter Name'/>
-                   <Text name='email' label='Enter Email'/>
-                   <Number name='phone' label='Enter Phone Number'/>
-                   <Password name='password' label='Enter Password'/>
-                    <Gender/>
-                    <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Sign Up</button>
-                </Form>
-            </Formik>
+            <div className="flex flex-col justify-around h-full">
+                <p className='text-3xl text-center font-medium'>Sign Up</p>
+                <Formik
+                    initialValues={initialValues}
+                    //   validate={validate}
+                    onSubmit={onsubmit}>
+                    <Form className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                        <Text name='name' label='Enter Name' />
+                        <Text name='email' label='Enter Email' />
+                        <Number name='phone' label='Enter Phone Number' />
+                        <Password name='password' label='Enter Password' />
+                        <Gender />
+                        <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Sign Up</button>
+                    </Form>
+                </Formik>
+            </div>
         </>
     );
 }

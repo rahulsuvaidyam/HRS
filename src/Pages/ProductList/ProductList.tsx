@@ -20,7 +20,7 @@ const ProductList: FC<ProductListProps> = () => {
         const getProducts = async() => {
             try {
                 const response = await Http({
-                  url: '/productbycategory',
+                  url: '/categorybyproduct',
                   method: 'get',
                   data:{category}
                 });

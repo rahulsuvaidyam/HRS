@@ -43,7 +43,9 @@ const Login: FC<LoginProps> = () => {
     
     return (
         <>
-              <Formik
+             <div className="flex flex-col justify-around h-full">
+              <p className='text-3xl text-center font-medium pb-3 sm:pb-0'>Sign In</p>
+             <Formik
                 initialValues={initialValues}
                 //   validate={validate}
                 onSubmit={onsubmit}>
@@ -53,6 +55,7 @@ const Login: FC<LoginProps> = () => {
                     <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Sign In</button>
                 </Form>
             </Formik>
+             </div>
         </>
     );
 }

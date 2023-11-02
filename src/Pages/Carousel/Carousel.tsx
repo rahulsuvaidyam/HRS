@@ -16,13 +16,13 @@ const Carousels: FC<CarouselsProps> = () => {
                     showThumbs={false}
                 >
                     <div >
-                        <img className='h-56 md:h-72' src='https://www.fnp.com/assets/images/custom/new-desk-home/hero-banners/Cake-Banner_Desk-41023.jpg' />
+                        <img className='h-56 md:h-72' src='https://www.fnp.com/assets/images/custom/new-desk-home/hero-banners/Cake-Banner_Desk-41023.jpg' alt=''/>
                     </div>
                     <div >
-                        <img className='h-56 md:h-72'  src='https://www.fnp.com/assets/images/custom/new-desk-home/hero-banners/Karwa-Chauth_Desktop-Banner_26oct.jpg' />
+                        <img className='h-56 md:h-72'  src='https://www.fnp.com/assets/images/custom/new-desk-home/hero-banners/Karwa-Chauth_Desktop-Banner_26oct.jpg' alt='' />
                     </div>
                     <div >
-                        <img className='h-56 md:h-72'  src='https://www.fnp.com/assets/images/custom/new-desk-home/hero-banners/Cake-Banner_Desk-41023.jpg' />
+                        <img className='h-56 md:h-72'  src='https://www.fnp.com/assets/images/custom/new-desk-home/hero-banners/Cake-Banner_Desk-41023.jpg' alt=''/>
                     </div>
                     
                 </Carousel>

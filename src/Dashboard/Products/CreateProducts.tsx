@@ -37,7 +37,7 @@ const CreateProducts: FC<CreateProductsProps> = () => {
         const getCategory = async() => {
             try {
                 const response = await Http({
-                  url: '/categoryfordd',
+                  url: '/categorydropdown',
                   method: 'get',
                 });
                 // toast.success(response?.data?.message)

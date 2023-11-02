@@ -21,18 +21,18 @@ const Navbar: FC<NavbarProps> = () => {
         // eslint-disable-next-line
         userDetails = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}')
         // eslint-disable-next-line
-    }, [isRender])
-
+    }, [isRender]) 
     return (
         <>
             <div className="w-full fixed top-0 h-12 md:h-14 z-50 bg-gray-200 shadow-sm">
                 <div className="px-2 md:px-8 flex justify-between items-center h-full w-full">
                     <Link to={'/'} className='text-xl font-medium cursor-pointer'>HRS</Link>
                     <div className="flex items-center gap-3 md:gap-6">
-                        {userDetails?.role === 'ADMIN' && <Link to='/dashboard' className='border px-3 py-2 font-medium text-sm bg-white rounded-md'>Dashboard</Link>}
+                    <Link to='/becomeseller' className='border px-3 py-2 font-medium text-sm hover:bg-white rounded-md'>BECOME A SELLER</Link>
+                        {userDetails?.role === 'SELLER' || userDetails?.role === 'ADMIN'  ? <Link to='/dashboard' className='border px-3 py-2 font-medium text-sm bg-white rounded-md'>Dashboard</Link>:''}
                         {userDetails?.name ? <>
                             <Menu as="div" className="relative order-2 md:order-1 inline-block text-left">
-                                <div><Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-full md:rounded-md bg-white md:px-3 md:py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                                <div><Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-full md:rounded-md hover:bg-white md:px-3 md:py-2 text-sm font-semibold text-gray-900 shadow-sm ring-gray-300 ">
                                     <p className='hidden md:block'><span className='flex gap-1 items-center'>{userDetails?.name?.split(' ')[0]}<BiChevronDown className='text-xl' /></span></p>
                                     <div className="w-7 h-7 block md:hidden ">
                                         <img className='rounded-full' src={userDetails.gender === 'FEMALE' ? avatarF: avatarM} alt="" />

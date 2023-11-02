@@ -6,12 +6,13 @@ const UserProtected = (props:any) => {
     const Navigate = useNavigate();
     const {isRender} = useContext(DataContext)
     let user:any = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}');
+    let login = sessionStorage.getItem('token');
     useEffect(() => {
-        if (user.role ==='BUYER') {
+        if (user.role ==='BUYER' || !login) {
             Navigate('/')
         }
         // eslint-disable-next-line
-    }, [isRender,user]);
+    }, [isRender,user,login]);
 
     return (
         <Component />

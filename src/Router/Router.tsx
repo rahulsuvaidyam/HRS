@@ -12,6 +12,7 @@ import Dashboard from '../Dashboard/DashBoard';
 import Product from '../Dashboard/Products/Products';
 import ProductDetails from '../Pages/ProductList/ProductDetails';
 import UserProtected from './UserProtected';
+import SellerRegister from '../Auth/SellerRegister/SellerRegister';
 
 interface RouterProps { }
 
@@ -27,6 +28,7 @@ const Router: FC<RouterProps> = () => {
           <Route path="/cart" element={<Protected Component={Cart} />} />
           <Route path="/productlist/:category" element={<ProductList />} />
           <Route path="/productdetails/:product" element={<ProductDetails />} />
+          <Route path="/becomeseller" element={<SellerRegister />} />
           <Route path="/dashboard" element={<UserProtected Component={Dashboard} />} >
             <Route path="category" element={<UserProtected Component={Categories} />} />
             <Route path="product" element={<UserProtected Component={Product} />} />

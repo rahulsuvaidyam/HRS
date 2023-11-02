@@ -11,7 +11,7 @@ const CategoryList: FC<CategoryListProps> = () => {
         const getCategory = async () => {
             try {
                 const response = await Http({
-                    url: '/category',
+                    url: '/categoryshow',
                     method: 'get',
                 },true);
                 // toast.success(response?.data?.message)

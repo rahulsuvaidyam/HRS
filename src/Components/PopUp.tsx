@@ -14,12 +14,14 @@ const PopUp: FC<PopUpProps> = ({ title }) => {
   const { openPopUP, setOpenPopUP, setCategoryEdit,categoryEdit,setproductEdit,productEdit } = useContext(DataContext)
   const { pathname } = useLocation()
   useEffect(() => {
+    // eslint-disable-next-line
     if (categoryEdit?.name && openPopUP === false) {
       setCategoryEdit({})
       }
     if (productEdit?.name && openPopUP === false) {
       setproductEdit({})
     }
+    // eslint-disable-next-line
   }, [openPopUP])
 
   return (

@@ -20,7 +20,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
         const getProducts = async () => {
             try {
                 const response = await Http({
-                    url: '/productone',
+                    url: '/productdetails',
                     method: 'get',
                     data: { _id: product }
                 });
@@ -67,7 +67,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                             >
                                 {products?.images?.map((e: any) => (
                                     <div key={e?._id}>
-                                        <img className='h-56' src={process?.env?.REACT_APP_API_URL + '/' + e?.url} alt='aa'/>
+                                        <img className='h-56' src={process.env.REACT_APP_API_URL + '/' + e?.url} alt='aa'/>
                                     </div>
                                 ))}
 
@@ -94,7 +94,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                             <p>{products?.description}</p>
                         </div>
                         <div className="w-full truncate">
-                            <p className=' font-medium to-gray-400'>Seller : {products?.created_by.name}</p>
+                            <p className=' font-medium to-gray-400'>Seller : {products?.created_by?.name}</p>
                     
                         </div>
                         <div className="w-full fixed md:sticky bottom-2 flex gap-4 left-0 px-2">

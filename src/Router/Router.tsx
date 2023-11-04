@@ -27,7 +27,7 @@ const Router: FC<RouterProps> = () => {
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Protected Component={Profile} />} />
           <Route path="/cart" element={<Protected Component={Cart} />} />
-          <Route path="/productlist/:category" element={<ProductList />} />
+          <Route path="/productlist/:category/:event" element={<ProductList />} />
           <Route path="/productdetails/:product" element={<ProductDetails />} />
           <Route path="/becomeseller" element={<SellerRegister />} />
           <Route path="/dashboard" element={<UserProtected Component={Dashboard} />} >

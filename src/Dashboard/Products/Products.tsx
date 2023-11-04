@@ -15,7 +15,7 @@ interface ProductProps { }
 const Product: FC<ProductProps> = () => {
     const [product, setProduct] = useState<any>([])
     let [loading, setLoading] = useState<boolean>(true);
-    const { setOpenPopUP, setproductEdit, openPopUP } = useContext(DataContext)
+    const { setOpenPopUP, setproductEdit } = useContext(DataContext)
     //    console.log(category)
     useEffect(() => {
         const getProduct = async () => {

@@ -28,7 +28,7 @@ const Navbar: FC<NavbarProps> = () => {
                 <div className="px-2 md:px-8 flex justify-between items-center h-full w-full">
                     <Link to={'/'} className='text-xl font-medium cursor-pointer'>HRS</Link>
                     <div className="flex items-center gap-3 md:gap-6">
-                    <Link to='/becomeseller' className='border px-3 py-2 font-medium text-sm hover:bg-white rounded-md'>BECOME A SELLER</Link>
+                        {userDetails?.role === 'SELLER'?'':<Link to='/becomeseller' className='border px-3 py-2 font-medium text-sm hover:bg-white rounded-md'>BECOME A SELLER</Link>} 
                         {userDetails?.role === 'SELLER' || userDetails?.role === 'ADMIN'  ? <Link to='/dashboard' className='border px-3 py-2 font-medium text-sm bg-white rounded-md'>Dashboard</Link>:''}
                         {userDetails?.name ? <>
                             <Menu as="div" className="relative order-2 md:order-1 inline-block text-left">
@@ -61,11 +61,11 @@ const Navbar: FC<NavbarProps> = () => {
                                 </Transition>
                             </Menu>
                         </> :
-                            <button onClick={() => setLogInPage(!logInPage)} className='hover:bg-blue-400 px-1 md:px-4 py-1 order-2 md:order-1 hover:text-white rounded-md text-sm md:text-base'>Sign In</button>
+                            <button onClick={() => setLogInPage(!logInPage)} className='hover:bg-primary px-1 md:px-4 py-1 order-2 md:order-1 hover:text-white rounded-md text-sm md:text-base'>Sign In</button>
                         }
                         <Link className='order-1 md:order-2 relative' to={'/cart'}>
                             <IoMdBasket className='text-2xl  text-gray-600 cursor-pointer' />
-                            <span className='w-4 h-4 rounded-full absolute -top-1 -right-2 flex items-center justify-center bg-blue-500 text-xs font-bold text-white'>2</span>
+                            <span className='w-4 h-4 rounded-full absolute -top-1 -right-2 flex items-center justify-center bg-primary text-xs font-bold text-white'>2</span>
                         </Link>
                     </div>
                 </div>

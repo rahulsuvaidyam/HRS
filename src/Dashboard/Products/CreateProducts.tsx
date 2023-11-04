@@ -24,6 +24,7 @@ const CreateProducts: FC<CreateProductsProps> = () => {
     const [image, setImage] = useState<any>(productEdit?.images?.map((e:any)=>e?._id) ??[])
     const [images, setImages] = useState<any>(productEdit?.images ??[])
     const [category, setcategory] = useState<any>([])
+    const [event, setevent] = useState<any>([])
     // console.log(productEdit)
     const initialValues: FormValues = {
         name: productEdit?.name ||"",
@@ -47,6 +48,19 @@ const CreateProducts: FC<CreateProductsProps> = () => {
               }
         }
         getCategory();
+        const getEvent = async() => {
+            try {
+                const response = await Http({
+                  url: '/event',
+                  method: 'get',
+                });
+                // toast.success(response?.data?.message)
+                setevent(response?.data?.data)
+              } catch ( error:any) {
+                toast.error(error.response?.data?.message)
+              }
+        }
+        getEvent();
     }, [])
     const onsubmit = async (values: any) => {
         if(productEdit?.name){
@@ -124,6 +138,7 @@ const CreateProducts: FC<CreateProductsProps> = () => {
                     <Number name='price' label='Enter Price' />
                     <Number name='discounts' label='Enter Discounts' />
                     <Select name='category' label='Category' array={category ?? []} />
+                    <Select name='event' label='Event' array={event ?? []} />
                     <TextArea name='description' label='Enter Description' />
                     {images?.length >= 1 &&
                     <div className="flex items-center gap-2 border px-2 py-1 rounded-md mb-2">

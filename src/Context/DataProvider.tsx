@@ -11,6 +11,8 @@ type DataContextValue = {
   setCategoryEdit:React.Dispatch<React.SetStateAction<any>>
   productEdit:any
   setproductEdit:React.Dispatch<React.SetStateAction<any>>
+  openSideBar:any
+  setopenSideBar:React.Dispatch<React.SetStateAction<any>>
   
 };
 
@@ -23,6 +25,7 @@ const DataProvider = ({ children }: DataProviderProps) => {
   const [logInPage, setLogInPage] = useState(false);
   const [isRender, setIsRender] = useState(false);
   const [openPopUP, setOpenPopUP] = useState(false)
+  const [openSideBar, setopenSideBar] = useState(true)
   const [categoryEdit, setCategoryEdit] = useState({})
   const [productEdit, setproductEdit] = useState({})
  
@@ -39,7 +42,9 @@ const DataProvider = ({ children }: DataProviderProps) => {
     categoryEdit, 
     setCategoryEdit,
     setproductEdit,
-    productEdit
+    productEdit,
+    openSideBar,
+     setopenSideBar
   };
   return (
     <DataContext.Provider value={value}>

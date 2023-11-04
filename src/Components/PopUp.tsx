@@ -5,6 +5,7 @@ import { IoClose } from 'react-icons/io5'
 import CreateCategories from '../Dashboard/Categories/CreateCategories';
 import { useLocation } from 'react-router-dom';
 import CreateProducts from '../Dashboard/Products/CreateProducts';
+import CreateEvent from '../Dashboard/Event/CreateEvent';
 
 interface PopUpProps {
   title: string
@@ -82,6 +83,7 @@ const PopUp: FC<PopUpProps> = ({ title }) => {
                       <div className="relative mt-4 flex-1">
                         {pathname === "/dashboard/category" && <CreateCategories />}
                         {pathname === "/dashboard/product" && <CreateProducts />}
+                        {pathname === "/dashboard/event" && <CreateEvent />}
 
                       </div>
                     </div>

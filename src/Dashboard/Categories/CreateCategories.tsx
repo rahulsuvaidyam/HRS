@@ -14,7 +14,7 @@ interface FormValues {
 }
 
 const CreateCategories: FC<CreateCategoriesProps> = () => {
-    const {setOpenPopUP,categoryEdit} = useContext(DataContext)
+    const {setOpenPopUP,categoryEdit,setIsRender,isRender} = useContext(DataContext)
     const [image, setImage] = useState<any>(categoryEdit?.image?._id ?? '' )
     const initialValues: FormValues = {
         name: categoryEdit?.name ||"",
@@ -32,6 +32,7 @@ const CreateCategories: FC<CreateCategoriesProps> = () => {
                 });
                 toast.success(response.data?.message)
                 setOpenPopUP(false)
+                setIsRender(!isRender)
             } catch (error: any) {
                 toast.error(error.response.data?.message)
             }
@@ -46,6 +47,7 @@ const CreateCategories: FC<CreateCategoriesProps> = () => {
             });
             toast.success(response.data?.message)
             setOpenPopUP(false)
+            setIsRender(!isRender)
         } catch (error: any) {
             toast.error(error.response.data?.message)
         }

@@ -13,6 +13,7 @@ import Product from '../Dashboard/Products/Products';
 import ProductDetails from '../Pages/ProductList/ProductDetails';
 import UserProtected from './UserProtected';
 import SellerRegister from '../Auth/SellerRegister/SellerRegister';
+import Event from '../Dashboard/Event/Event';
 
 interface RouterProps { }
 
@@ -32,6 +33,7 @@ const Router: FC<RouterProps> = () => {
           <Route path="/dashboard" element={<UserProtected Component={Dashboard} />} >
             <Route path="category" element={<UserProtected Component={Categories} />} />
             <Route path="product" element={<UserProtected Component={Product} />} />
+            <Route path="event" element={<UserProtected Component={Event} />} />
           </Route>
         </Routes>
         <Auth />

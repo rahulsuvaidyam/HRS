@@ -20,7 +20,7 @@ interface FormValues {
 }
 
 const CreateProducts: FC<CreateProductsProps> = () => {
-    const { setOpenPopUP ,productEdit} = useContext(DataContext)
+    const { setOpenPopUP ,productEdit,isRender,setIsRender} = useContext(DataContext)
     const [image, setImage] = useState<any>(productEdit?.images?.map((e:any)=>e?._id) ??[])
     const [images, setImages] = useState<any>(productEdit?.images ??[])
     const [category, setcategory] = useState<any>([])
@@ -74,6 +74,7 @@ const CreateProducts: FC<CreateProductsProps> = () => {
             });
             toast.success(response.data?.message)
             setOpenPopUP(false)
+            setIsRender(!isRender)
         } catch (error: any) {
             toast.error(error.response.data?.message)
         }
@@ -87,6 +88,7 @@ const CreateProducts: FC<CreateProductsProps> = () => {
             });
             toast.success(response.data?.message)
             setOpenPopUP(false)
+            setIsRender(!isRender)
         } catch (error: any) {
             toast.error(error.response.data?.message)
         }

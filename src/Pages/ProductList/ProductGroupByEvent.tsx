@@ -37,7 +37,7 @@ const ProductGroupByEvent: FC<ProductGroupByEventProps> = () => {
             <div className="w-full md:px-8 flex flex-col gap-5">
                 <Occasion/>
                 {product?.map((e: any) => (
-                    <div key={e._id} className="bg-[#FEF6F7] md:rounded-md shadow-md p-3">
+                    <div key={e?.event?._id} className="bg-[#FEF6F7] md:rounded-md shadow-md p-3">
                         <p className='text-2xl font-medium '>{e?.event?.name}</p>
                         <div className="pt-3 overflow-x-auto scrollbar-thin flex gap-2 md:gap-3">
                             {e?.products?.map((e: any) => (

@@ -4,13 +4,12 @@ import { DataContext } from '../Context/DataProvider';
 const Protected = (props:any) => {
     const { Component } = props;
     const Navigate = useNavigate();
-    const {isRender,setLogInPage} = useContext(DataContext)
+    const {isRender} = useContext(DataContext)
     let login = sessionStorage.getItem('token');
     
     useEffect(() => {
         if (!login) {
             Navigate('/')
-            setLogInPage(true)
         }
         // eslint-disable-next-line
     }, [isRender,login]);

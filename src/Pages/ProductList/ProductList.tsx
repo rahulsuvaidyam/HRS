@@ -7,6 +7,7 @@ import Http from '../../Services/Http';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import Spinner from '../../Components/Loader/Spinner';
+import DataNotFound from '../../Components/AlertPage/DataNotFound';
 
 interface ProductListProps { }
 
@@ -49,6 +50,7 @@ const ProductList: FC<ProductListProps> = () => {
       <div className="pt-12 md:pt-14 w-full h-full max-w-[1600px] mx-auto">
         {/* <Filter/> */}
         {loading ? <Spinner loading={loading} /> :
+          product.length >= 1?
           <div className="w-full h-full pt-2 px-2 md:px-8 ">
             <div className="w-full bg-gray-100 p-2 rounded-md text-xl font-medium">Chocolate Cake</div>
             <div className="grid pt-3 grid-cols-2 gap-x-2 md:gap-x-6 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
@@ -75,7 +77,7 @@ const ProductList: FC<ProductListProps> = () => {
                 </Link>
               ))}
             </div>
-          </div>
+          </div>:<DataNotFound/>
         }
       </div>
     </>

@@ -15,7 +15,7 @@ interface ProductProps { }
 const Product: FC<ProductProps> = () => {
     const [product, setProduct] = useState<any>([])
     let [loading, setLoading] = useState<boolean>(true);
-    const { setOpenPopUP, setproductEdit } = useContext(DataContext)
+    const { setOpenPopUP, setproductEdit ,isRender} = useContext(DataContext)
     //    console.log(category)
     useEffect(() => {
         const getProduct = async () => {
@@ -36,7 +36,7 @@ const Product: FC<ProductProps> = () => {
         }
         getProduct();
         // eslint-disable-next-line
-    }, [])
+    }, [isRender])
     const edit = (e: any) => {
         setOpenPopUP(true)
         setproductEdit(e)

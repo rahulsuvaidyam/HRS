@@ -1,5 +1,5 @@
-import { useState, type FC, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, type FC, useEffect, useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Http from '../../Services/Http';
 import { toast } from 'react-toastify';
 import { BsStarHalf } from 'react-icons/bs'
@@ -7,6 +7,7 @@ import { BiRupee } from 'react-icons/bi';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import Spinner from '../../Components/Loader/Spinner';
+import { DataContext } from '../../Context/DataProvider';
 
 interface ProductDetailsProps { }
 
@@ -16,6 +17,8 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
     const [imageSelected, setimageSelected] = useState<any>({})
     let [loading, setLoading] = useState<boolean>(true);
     const { product } = useParams()
+    const navigate = useNavigate()
+    const {cartItems,setCartItems} = useContext(DataContext)
     useEffect(() => {
         const getProducts = async () => {
             try {
@@ -37,9 +40,18 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
         getProducts();
         // eslint-disable-next-line
     }, [])
+
+    const CartItem =(e:any)=>{
+        setCartItems([...cartItems,e])
+    }
+    const BuyNow =(e:any)=>{
+        setCartItems([...cartItems,e])
+        navigate('/buy')
+    }
+    console.log(cartItems)
     return (
         <>
-            <div className="pt-12 md:pt-14 w-full h-full">
+            <div className="pt-12 md:pt-14 w-full h-full max-w-[1600px] mx-auto">
             {loading?<Spinner loading={loading}/>:
                 <div className="flex flex-col md:flex-row w-full h-full md:pt-4">
                     <div className="w-full md:w-1/2 lg:w-2/5 md:h-full md:p-2">
@@ -98,8 +110,8 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                     
                         </div>
                         <div className="w-full fixed md:sticky bottom-2 flex gap-4 left-0 px-2">
-                            <button className='uppercase w-full  py-2 text-white rounded-md bg-blue-500'>Add to Cart</button>
-                            <button className='uppercase w-full  py-2 text-white rounded-md bg-blue-500'>Buy Now</button>
+                            <button onClick={()=>CartItem(products)} className='uppercase w-full  py-2 text-white rounded-md bg-blue-500'>Add to Cart</button>
+                            <button onClick={()=>BuyNow(products)} className='uppercase w-full  py-2 text-white rounded-md bg-blue-500'>Buy Now</button>
                         </div>
                     </div>
                 </div>}

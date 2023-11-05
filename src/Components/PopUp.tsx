@@ -6,13 +6,15 @@ import CreateCategories from '../Dashboard/Categories/CreateCategories';
 import { useLocation } from 'react-router-dom';
 import CreateProducts from '../Dashboard/Products/CreateProducts';
 import CreateEvent from '../Dashboard/Event/CreateEvent';
+import CreateCarousels from '../Dashboard/Carousels/CreateCarousels';
 
 interface PopUpProps {
   title: string
 }
 
 const PopUp: FC<PopUpProps> = ({ title }) => {
-  const { openPopUP, setOpenPopUP, setCategoryEdit,categoryEdit,setproductEdit,productEdit } = useContext(DataContext)
+  const { openPopUP, setOpenPopUP, setCategoryEdit,categoryEdit,setproductEdit,productEdit,
+  eventEdit,seteventEdit } = useContext(DataContext)
   const { pathname } = useLocation()
   useEffect(() => {
     // eslint-disable-next-line
@@ -21,6 +23,9 @@ const PopUp: FC<PopUpProps> = ({ title }) => {
       }
     if (productEdit?.name && openPopUP === false) {
       setproductEdit({})
+    }
+    if (eventEdit?.name && openPopUP === false) {
+      seteventEdit({})
     }
     // eslint-disable-next-line
   }, [openPopUP])
@@ -84,6 +89,7 @@ const PopUp: FC<PopUpProps> = ({ title }) => {
                         {pathname === "/dashboard/category" && <CreateCategories />}
                         {pathname === "/dashboard/product" && <CreateProducts />}
                         {pathname === "/dashboard/event" && <CreateEvent />}
+                        {pathname === "/dashboard/carousel" && <CreateCarousels />}
 
                       </div>
                     </div>

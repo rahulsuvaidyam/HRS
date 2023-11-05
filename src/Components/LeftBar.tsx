@@ -4,6 +4,7 @@ import {MdDashboardCustomize,MdCategory} from 'react-icons/md'
 import {TbBrandProducthunt} from 'react-icons/tb'
 import { DataContext } from '../Context/DataProvider';
 import {BsArrowBarLeft} from 'react-icons/bs'
+import {BiCarousel} from 'react-icons/bi'
 import {CgEventbrite} from 'react-icons/cg'
 
 interface LeftBarProps { }
@@ -40,6 +41,12 @@ const LeftBar: FC<LeftBarProps> = () => {
                                 <Link to='product' className={`${pathname === '/dashboard/product'?'bg-gray-100':''} flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 group`}>
                                    <TbBrandProducthunt className="w-5 h-5 text-gray-500 transition duration-75 "/>
                                     <span className={`${openSideBar?'block':'hidden'} ml-3 truncate transition-all duration-500`}>Products</span>
+                                </Link>
+                            </li> 
+                            <li>
+                                <Link to='carousel' className={`${pathname === '/dashboard/carousel'?'bg-gray-100':''} flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 group`}>
+                                   <BiCarousel className="w-5 h-5 text-gray-500 transition duration-75 "/>
+                                    <span className={`${openSideBar?'block':'hidden'} ml-3 truncate transition-all duration-500`}>Carousel</span>
                                 </Link>
                             </li> 
                         </ul>

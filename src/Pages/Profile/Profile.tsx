@@ -55,7 +55,7 @@ const Profile: FC<ProfileProps> = () => {
 
     return (
         <>
-            <div className="pt-12 md:pt-14 w-full h-full flex flex-col sm:px-8">
+            <div className="pt-12 md:pt-14 w-full h-full flex flex-col sm:px-8 max-w-[1600px] mx-auto">
                 <div className="flex flex-col sm:flex-row gap-3 h-full sm:pt-4">
                     <div className="w-full md:w-1/3 lg:w-1/4 sm:h-full flex flex-col gap-3">
                         <div className={`${editProfile ? 'block' : 'hidden sm:block'}`}>

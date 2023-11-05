@@ -11,6 +11,8 @@ interface CartProps { }
 
 const Cart: FC<CartProps> = () => {
   const [products, setProducts] = useState([])
+  const [totalPrice, setTotalPrice] = useState(0);
+
   const { setIsRender, isRender } = useContext(DataContext)
   useEffect(() => {
     const GetCart = async () => {
@@ -55,6 +57,24 @@ const Cart: FC<CartProps> = () => {
       toast.error(error.response?.data?.message)
     }
   }
+  // total price
+  useEffect(() => {
+    const calculateTotalPrice = () => {
+      let totalPrice = 0;
+      products.map((product:any) => {
+        const productPrice = product.product.discounts
+          ? Math.ceil(
+              ((100 - product.product.discounts) / 100) *
+                product.product.price * product.count)
+          : product.product.price * product.count;
+        totalPrice += productPrice;
+      });
+      setTotalPrice(totalPrice);
+    };
+  
+    calculateTotalPrice();
+  }, [products]);
+  
   return (
     <>
     {products?.length >= 1 ?
@@ -98,7 +118,7 @@ const Cart: FC<CartProps> = () => {
           ))}
         </div> 
           <div className="fixed w-full left-0 bg-white h-16 z-50 bottom-0 px-2 md:px-16 flex justify-between items-center">
-            <p className='text-xl text-gray-700 flex items-center'>Total Price : <span className='text-lg flex items-center ' ><BiRupee /> 7999</span></p>
+            <p className='text-xl text-gray-700 flex items-center'>Total Price : <span className='text-lg flex items-center ' ><BiRupee /> {totalPrice}</span></p>
             <Link to='/buy' className='text-white bg-blue-500 px-4 py-2 md:px-10'>PLACE ORDER</Link>
           </div>
       </div>:<CartAlert/>}

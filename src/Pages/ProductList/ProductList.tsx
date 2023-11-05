@@ -46,7 +46,7 @@ const ProductList: FC<ProductListProps> = () => {
   }, [])
   return (
     <>
-      <div className="pt-12 md:pt-14 w-full h-full">
+      <div className="pt-12 md:pt-14 w-full h-full max-w-[1600px] mx-auto">
         {/* <Filter/> */}
         {loading ? <Spinner loading={loading} /> :
           <div className="w-full h-full pt-2 px-2 md:px-8 ">

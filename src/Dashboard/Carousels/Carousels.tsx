@@ -8,6 +8,7 @@ import Spinner from '../../Components/Loader/Spinner';
 import Http from '../../Services/Http';
 import { toast } from 'react-toastify';
 import { DataContext } from '../../Context/DataProvider';
+import DataNotFound from '../../Components/AlertPage/DataNotFound';
 
 interface CarouselsProps {}
 
@@ -62,7 +63,7 @@ const Carousels: FC<CarouselsProps> = () => {
         <>
          {loading === true ? <Spinner loading={loading} />
                 : <>
-                    <div className="w-full h-full px-4 relative">
+                    {carousel.length >=1 ?<div className="w-full h-full px-4 relative">
                         <div className="grid pt-3 grid-cols-1 gap-x-2 md:gap-x-6 gap-y-4 md:grid-cols-2 lg:grid-cols-3">
                             {carousel?.map((e: any) => (
                                 <div key={e?._id} className="border hover:shadow-xl cursor-pointer group rounded-sm relative">
@@ -93,7 +94,7 @@ const Carousels: FC<CarouselsProps> = () => {
                         <div onClick={() => setOpenPopUP(true)} className='w-14 h-14 flex items-center cursor-pointer justify-center rounded-full border-2 fixed bottom-6 right-6'>
                             <BiPlus className='text-3xl text-gray-600' />
                         </div>
-                    </div>
+                    </div>:<DataNotFound/>}
                     <PopUp title='Create Carousel' />
                 </>}
         </>

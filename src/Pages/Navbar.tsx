@@ -1,4 +1,4 @@
-import { useContext, type FC, useEffect, Fragment } from 'react';
+import { useContext, type FC, useEffect, Fragment, useState } from 'react';
 import { DataContext } from '../Context/DataProvider';
 import { IoMdBasket } from 'react-icons/io'
 import { BiChevronDown } from 'react-icons/bi'
@@ -6,17 +6,33 @@ import { Menu, Transition } from '@headlessui/react'
 import { Link } from 'react-router-dom';
 import avatarM from '../Assets/UserImage/avatarm.png'
 import avatarF from '../Assets/UserImage/avatarf.jpeg'
+import Http from '../Services/Http';
 
 interface NavbarProps { }
 
 const Navbar: FC<NavbarProps> = () => {
+    const [count, setCount] = useState(0)
     const { setLogInPage, logInPage, setIsRender, isRender } = useContext(DataContext)
     let userDetails: any = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}')
     const Signout = () => {
         sessionStorage.clear()
         setIsRender(!isRender)
     }
-
+      useEffect(() => {
+        const GetCart = async () => {
+          try {
+    
+            const response = await Http({
+              url: '/cartcount',
+              method: 'get',
+            });
+            setCount(response?.data?.data)
+          } catch (error: any) {
+            console.log(error.response?.data?.message)
+          }
+        }
+        GetCart()
+      }, [isRender])
     useEffect(() => {
         // eslint-disable-next-line
         userDetails = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}')
@@ -25,7 +41,7 @@ const Navbar: FC<NavbarProps> = () => {
     return (
         <>
             <div className="w-full fixed top-0 h-12 md:h-14 z-50 bg-gray-200 shadow-sm">
-                <div className="px-2 md:px-8 flex justify-between items-center h-full w-full max-w-[1600px] mx-auto">
+                <div className="px-2 md:px-8 flex justify-between items-center h-full w-full">
                     <Link to={'/'} className='text-xl font-medium cursor-pointer'>HRS</Link>
                     <div className="flex items-center gap-3 md:gap-6">
                         {userDetails?.role === 'SELLER'?'':<Link to='/becomeseller' className='border px-3 py-2 font-medium text-sm hover:bg-white rounded-md'>BECOME A SELLER</Link>} 
@@ -65,7 +81,7 @@ const Navbar: FC<NavbarProps> = () => {
                         }
                         <Link className='order-1 md:order-2 relative' to={'/cart'}>
                             <IoMdBasket className='text-2xl  text-gray-600 cursor-pointer' />
-                            <span className='w-4 h-4 rounded-full absolute -top-1 -right-2 flex items-center justify-center bg-primary text-xs font-bold text-white'>2</span>
+                           {count >= 1 && <span className='w-4 h-4 rounded-full absolute -top-1 -right-2 flex items-center justify-center bg-primary text-xs font-bold text-white'>{count}</span> }
                         </Link>
                     </div>
                 </div>

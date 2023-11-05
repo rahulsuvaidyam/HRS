@@ -12,9 +12,7 @@ type DataContextValue = {
   productEdit:any
   setproductEdit:React.Dispatch<React.SetStateAction<any>>
   openSideBar:any
-  setopenSideBar:React.Dispatch<React.SetStateAction<any>>
-  cartItems:any
-  setCartItems:React.Dispatch<React.SetStateAction<any>>
+  setopenSideBar:React.Dispatch<React.SetStateAction<any>> 
   eventEdit:any
   seteventEdit:React.Dispatch<React.SetStateAction<any>>
   carouselEdit:any
@@ -36,7 +34,6 @@ const DataProvider = ({ children }: DataProviderProps) => {
   const [productEdit, setproductEdit] = useState({})
   const [carouselEdit, setcarouselEdit] = useState<any>({})
   const [eventEdit, seteventEdit] = useState({})
-  const [cartItems, setCartItems] = useState<any>([])
  
  
 
@@ -53,9 +50,7 @@ const DataProvider = ({ children }: DataProviderProps) => {
     setproductEdit,
     productEdit,
     openSideBar,
-    setopenSideBar,
-    cartItems,
-    setCartItems,
+    setopenSideBar, 
     eventEdit,
     seteventEdit,
     carouselEdit,

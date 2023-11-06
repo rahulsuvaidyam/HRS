@@ -59,13 +59,15 @@ const SellerRegister: FC<SellerRegisterProps> = () => {
     }
     return (
         <>
-           <div className="pt-12 md:pt-14">
+           <div className="pt-12 md:pt-14 flex flex-col px-12 h-full">
+            <p className='text-center pt-5 text-xl uppercase'>Sign up for seller</p>
            <Formik
                 initialValues={initialValues}
                 //   validate={validate}
                 onSubmit={onsubmit}>
                 <Form className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
-                   <Text name='name' label='Enter Name'/>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-14">
+                  <Text name='name' label='Enter Name'/>
                    <Text name='email' label='Enter Email'/>
                    <Text name='shop_name' label='Enter Shop Name'/>
                    <Text name='address' label='Enter Address'/>
@@ -73,7 +75,8 @@ const SellerRegister: FC<SellerRegisterProps> = () => {
                    <Number name='phone' label='Enter Phone Number'/>
                    <Password name='password' label='Enter Password'/>
                     <Gender/>
-                    <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Create</button>
+                  </div>
+                    <button type='submit' className='border w-1/2 font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Create</button>
                 </Form>
             </Formik>
            </div>

@@ -19,7 +19,7 @@ const ShowCarousel: FC<ShowCarouselProps> = () => {
                     method: 'get',
                 });
                 // toast.success(response?.data?.message)
-                setcarousel(response?.data?.data)
+                setcarousel(response?.data?.data?.images)
 
             } catch (error: any) {
                 toast.error(error.response?.data?.message)
@@ -36,16 +36,11 @@ const ShowCarousel: FC<ShowCarouselProps> = () => {
                     infiniteLoop={true}
                     autoPlay={true}
                     dynamicHeight={true}
-                    showThumbs={false}
-                >
-                    {carousel?.map((e: any) => (
-                       <div key={e._id}>
-                        { e.images.map((el: any) => (
-                            <div key={el?._id}>
-                                <img className='h-32 md:h-56' src={process.env.REACT_APP_API_URL + '/' + el?.url} alt='' />
-                            </div>
-                        ))}
-                       </div>
+                    showThumbs={false} >
+                    {carousel?.map((el: any) => (
+                        <div key={el?._id}>
+                            <img className='h-32 md:h-56' src={process.env.REACT_APP_API_URL + '/' + el?.url} alt={el?.mimetype} />
+                        </div>
                     ))}
                 </Carousel>
             </div>

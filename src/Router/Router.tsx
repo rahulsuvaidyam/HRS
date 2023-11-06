@@ -16,6 +16,9 @@ import SellerRegister from '../Auth/SellerRegister/SellerRegister';
 import Event from '../Dashboard/Event/Event';
 import BuyProducts from '../Pages/BuyProducts/BuyProducts';
 import Carousels from '../Dashboard/Carousels/Carousels';
+import Personal from '../Pages/Profile/Personal';
+import Orders from '../Pages/Profile/Orders';
+import Address from '../Pages/Profile/Address/Address';
 
 interface RouterProps { }
 
@@ -27,7 +30,11 @@ const Router: FC<RouterProps> = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Protected Component={Profile} />} />
+          <Route path="/profile" element={<Protected Component={Profile} />} >
+            <Route path="order" element={<Protected Component={Orders} />} />
+            <Route path="personal" element={<Protected Component={Personal} />} />
+            <Route path="address" element={<Protected Component={Address} />} />
+          </Route>
           <Route path="/cart" element={<Protected Component={Cart} />} />
           <Route path="/buy" element={<Protected Component={BuyProducts} />} />
           <Route path="/productlist/:category/:event" element={<ProductList />} />

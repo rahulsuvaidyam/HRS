@@ -14,6 +14,9 @@
 .active .step{
   @apply bg-white border text-blue-700 border-blue-500
 }
+.active:not(:first-child):before{
+  @apply  bg-blue-500
+}
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { DataContext } from '../../Context/DataProvider';
 import CartAlert from '../../Components/AlertPage/CartAlert';
 import CartLoader from '../../Components/Loader/CartLoader';
-import { TotalPrice } from '../../Services/TotalPrice';
+import { Discounts, TotalPrice, TotalPriceWithDiscount } from '../../Services/TotalPrice';
 interface CartProps { }
 
 const Cart: FC<CartProps> = () => {
@@ -78,13 +78,14 @@ const Cart: FC<CartProps> = () => {
     <>
       {loading ? <CartLoader /> :
         products?.length >= 1 ?
-          <div className="pt-12 md:pt-14 pb-16 overflow-y-auto scrollbar-thin w-full h-full px-0 md:px-8 bg-gray-100 relative" >
-            <div className="w-full gap-2 md:pt-3 grid grid-cols-1 xl:grid-cols-2 ">
+          <div className="pt-12 md:pt-14 pb-16   w-full h-full px-0 lg:px-8 bg-gray-100 relative" >
+            <div className="flex flex-col md:flex-row gap-3 h-full pt-1 md:pt-3 overflow-y-auto md:overscroll-y-none scrollbar-thin">
+            <div className="w-full md:w-[70%] md:overflow-y-auto md:scrollbar-thin md:border h-auto md:h-full flex flex-col bg-white">
               {products?.map((e: any) => (
-                <div key={e?._id} className=" h-36 md:h-40 p-2 text-gray-800 relative bg-white border flex flex-col md:flex-row justify-between">
-                  <input type="checkbox" className='absolute right-2' onChange={()=>SelectedProduct(e._id)} checked={product_id.find((_id:string)=>(_id===e._id))}/>
-                  <Link to={'/productdetails/' + e?.product?._id} className="flex gap-2 md:gap-4 group">
-                    <img className='h-20 md:h-full rounded-md' src={process.env.REACT_APP_API_URL + '/' + e?.product?.images[0]?.url} alt="" />
+                <div key={e?._id} className="lg:h-40 p-3 text-gray-800 shadow-md md:shadow-none relative border-b flex flex-col lg:flex-row justify-between">
+                  <input type="checkbox" className='absolute right-4' onChange={()=>SelectedProduct(e._id)} checked={product_id.find((_id:string)=>(_id===e._id))}/>
+                  <Link to={'/productdetails/' + e?.product?._id} className="flex gap-2 lg:gap-4 group">
+                    <img className='h-20 lg:h-full rounded-md' src={process.env.REACT_APP_API_URL + '/' + e?.product?.images[0]?.url} alt="" />
                     <div className='flex flex-col justify-between'>
                       <div className='flex flex-col gap-5'>
                         <p className='text-sm md:text-lg truncate group-hover:underline'>{e?.product?.name}</p>
@@ -101,13 +102,13 @@ const Cart: FC<CartProps> = () => {
                       </div>
                     </div>
                   </Link>
-                  <div className="flex flex-row-reverse md:flex-col items-center justify-between">
+                  <div className="flex flex-row-reverse lg:flex-col items-center justify-between">
                     <RiDeleteBin6Line onClick={() => DeleteItem(e?._id)} className='text-xl text-red-500 cursor-pointer' />
                     <div className="flex gap-2 items-center">
                       {/*  */}
                       <div className="flex bg-gray-100 px-2 py-1 rounded-md">
-                        <button className=''>Qty :</button>
-                        <select value={e?.count} name="" id="" onChange={(el) => CartItemCount(e?._id, el.target.value)} className='outline-none'>
+                        <button className='cursor-text'>Qty :</button>
+                        <select value={e?.count} name="" id="" onChange={(el) => CartItemCount(e?._id, el.target.value)} className='outline-none cursor-pointer'>
                           <option value="1">1</option>
                           <option value="2">2</option>
                           <option value="3">3</option>
@@ -118,8 +119,20 @@ const Cart: FC<CartProps> = () => {
                 </div>
               ))}
             </div>
+            <div className="w-full md:w-[30%]">
+               <div className="md:border bg-white h-auto shadow-md md:shadow-none">
+               <p  className='text-lg text-gray-600 h-12 border-b flex items-center px-4'>PRICE DETAILS</p>
+                <div className="flex flex-col gap-5 p-4 border-b">
+                  <p className=' flex justify-between items-center'>Price <span className='flex items-center'><BiRupee className='text-base' />{TotalPrice(products,product_id)}</span></p>
+                  <p className=' flex justify-between items-center'>Discounts <span className='flex items-center text-blue-500'>-<BiRupee className='text-base' />{Discounts(products,product_id)}</span></p>
+                  <p className=' flex justify-between items-center'>Delevery Charge <del className='flex items-center text-gray-500'><BiRupee className='text-base' />40</del></p>
+                </div>
+                <p className=' flex justify-between px-4 py-2 font-medium'>Tolal Price <span className='flex items-center'><BiRupee className='text-base' />{TotalPriceWithDiscount(products,product_id)}</span></p>
+               </div>
+            </div>
+            </div>
            {product_id.length > 0 &&  <div className="fixed w-full left-0 bg-white h-16 z-50 bottom-0 px-2 md:px-16 flex justify-between items-center">
-              <p className='text-xl text-gray-700 flex items-center'>Total Price : <span className='text-lg flex items-center ' ><BiRupee /> {TotalPrice(products,product_id)}</span></p>
+              <p className='text-xl text-gray-700 flex items-center'>Total Price : <span className='text-lg flex items-center ' ><BiRupee /> {TotalPriceWithDiscount(products,product_id)}</span></p>
               <Link onClick={() => setIsRender(!isRender)} to='/buy' className='text-white bg-blue-500 px-4 py-2 md:px-10'>PLACE ORDER</Link>
             </div>}
           </div> : <CartAlert />}

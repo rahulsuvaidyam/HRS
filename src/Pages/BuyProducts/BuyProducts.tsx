@@ -5,7 +5,7 @@ import Http from '../../Services/Http';
 import { DataContext } from '../../Context/DataProvider';
 import AddressForm from '../Profile/Address/AddressForm';
 import { BiRupee } from 'react-icons/bi';
-import { TotalPrice } from '../../Services/TotalPrice';
+import { TotalPriceWithDiscount } from '../../Services/TotalPrice';
 import Items from './Items';
 import CartLoader from '../../Components/Loader/CartLoader';
 
@@ -60,15 +60,15 @@ const BuyProducts: FC<BuyProductsProps> = () => {
 
   return (
     <>
-      <div className="w-full h-full relative pt-12 md:pt-14 max-w-[1600px] mx-auto">
+      <div className="w-full h-full relative pt-12 md:pt-14 ">
         <Stepers {...{ currentStep }} />
         {loader && <CartLoader/> }
-          <> {/* step one */}
-            {currentStep === 1 && <div className='px-2 md:px-16'><AddressForm editData={editData} /> </div>}
+          <div className='py-14 h-full max-w-[1600px] mx-auto'> {/* step one */}
+            {currentStep === 1 && <div className='px-2 pt-2 md:px-8 lg:px-20'><AddressForm editData={editData} /> </div>}
             {/* step one */}
             {/* step two */}
-            {currentStep === 2 && <div className=" md:px-20 pt-3 md:pt-5">
-              <div className=" w-full bg-gray-50 shadow-md md:border p-2 md:p-3 flex items-center justify-between">
+            {currentStep === 2 && <div className="h-full overflow-y-auto scrollbar-thin md:px-4 lg:px-20 pt-4">
+              <div className=" w-full bg-gray-50 shadow-md md:shadow-none md:border p-2 md:p-3 flex items-center justify-between">
                 <div>
                   <p className='flex gap-3'>{address?.name}<span>{address?.phone}</span></p>
                   <p className='flex gap-3'>{address?.house_name} , {address?.road_name} ,
@@ -84,9 +84,9 @@ const BuyProducts: FC<BuyProductsProps> = () => {
             </div>}
             {/* step two */}
             {currentStep >= 2 && <div className="w-full fixed bottom-0 left-0 px-2  md:px-20 bg-slate-50 h-14 flex items-center justify-between">
-              <p className='flex items-center '><BiRupee />{TotalPrice(totalPrice)}</p>
+              <p className='flex items-center '>Tolal Price  <BiRupee />{TotalPriceWithDiscount(totalPrice)}</p>
               <button onClick={() => Order()} className='bg-blue-500 rounded-md md:rounded-none py-2 text-white px-8 md:px-16'>Continue</button>
-            </div>}</>
+            </div>}</div>
       </div>
     </>
   );

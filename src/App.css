@@ -9,7 +9,7 @@
   @apply content-[''] bg-slate-200 absolute w-full h-[3px] right-2/4 top-1/3 -translate-y-1
 }
 .step{
-  @apply w-8 h-8 flex z-10 relative bg-blue-500 font-semibold rounded-full items-center justify-center text-white
+  @apply w-7 h-7 md:w-8 md:h-8 flex z-10 relative bg-blue-500 font-semibold rounded-full items-center justify-center text-white
 }
 .active .step{
   @apply bg-white border text-blue-700 border-blue-500

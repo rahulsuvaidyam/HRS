@@ -53,7 +53,7 @@ const Address: FC<AddressProps> = () => {
      }
     return (
         <>
-        {addAddress?<AddressForm editData={editData} set={setAddAddress}/>:
+        {addAddress?<AddressForm editData={editData} setAddAddress={setAddAddress}/>:
         <div className="w-full pt-3">
             <button onClick={()=>setAddAddress(true)} className='w-full border py-2 flex items-center justify-center gap-3'><MdAdd/>ADD NEW ADDRESS</button>
             <div className="pt-6 flex flex-col gap-3">

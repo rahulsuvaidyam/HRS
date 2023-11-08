@@ -16,7 +16,7 @@ const LeftBar: FC<LeftBarProps> = () => {
         <>
             <div className=''>
                 <div className="w-full md:h-full flex flex-col">
-                    <div className="w-full z-20 h-24 md:h-16 bg-gray-50 md:bg-white md:border flex flex-col md:flex-row items-center justify-center md:justify-start md:gap-3 md:px-4">
+                    <div className="w-full z-20 h-24 md:h-20 bg-gray-50 md:bg-white md:border flex flex-col md:flex-row items-center justify-center md:justify-start md:gap-3 md:px-4">
                         <div className="w-12 min-w-[48px] h-12 rounded-full border">
                             <img className='rounded-full' src={userDetails.gender === 'FEMALE' ? avatarF : avatarM} alt="" />
                         </div>

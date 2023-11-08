@@ -33,12 +33,17 @@ const BuyProducts: FC<BuyProductsProps> = () => {
           method: 'get',
           data: { user: user?._id }
         });
-        if (response.data.code === 'SUCCESS_200') {
+        if (response.data.code === 'SUCCESS_200' && response.data.data) {
           setaddress(response?.data?.data)
           setTimeout(() => {
             setLoader(false)
           }, 500);
           setcurrentStep(2)
+        }else{
+          setTimeout(() => {
+            setLoader(false)
+          }, 500);
+          setcurrentStep(1)
         }
       } catch (error: any) {
         toast.error(error.response.data?.message)
@@ -77,8 +82,8 @@ const BuyProducts: FC<BuyProductsProps> = () => {
                     {address?.district?.name} District ,{address?.state?.name} - {address?.pin_code}</p>
                 </div>
                 <div className='flex flex-col gap-3 justify-between h-full items-end'>
-                  <button className='border px-2 py-1 text-sm rounded-md bg-white' onClick={()=>setOpen(true)}>Change</button>
-                  <button onClick={EditAddress} className='border px-2 py-1 text-sm rounded-md bg-white'>Edit</button>
+                  <button className='border px-2 py-0.5 text-sm rounded-md bg-white' onClick={()=>setOpen(true)}>Change</button>
+                  <button onClick={EditAddress} className='border px-3 py-0.5 text-sm rounded-md bg-white'>Edit</button>
 
                 </div>
               </div>

@@ -8,6 +8,7 @@ import { DataContext } from '../../Context/DataProvider';
 import CartAlert from '../../Components/AlertPage/CartAlert';
 import CartLoader from '../../Components/Loader/CartLoader';
 import { Discounts, TotalPrice, TotalPriceWithDiscount } from '../../Services/TotalPrice';
+import { BsStarHalf } from 'react-icons/bs';
 interface CartProps { }
 
 const Cart: FC<CartProps> = () => {
@@ -82,16 +83,17 @@ const Cart: FC<CartProps> = () => {
             <div className="flex flex-col md:flex-row gap-3 h-full pt-1 md:pt-3 overflow-y-auto md:overscroll-y-none scrollbar-thin">
             <div className="w-full md:w-[70%] md:overflow-y-auto  shadow-md md:shadow-none md:scrollbar-thin md:border h-auto md:h-full flex flex-col bg-white">
               {products?.map((e: any) => (
-                <div key={e?._id} className="lg:h-40 p-3 text-gray-800 relative border-b flex flex-col lg:flex-row justify-between">
-                  <input type="checkbox" className='absolute right-4' onChange={()=>SelectedProduct(e._id)} checked={product_id.find((_id:string)=>(_id===e._id))}/>
+                <div key={e?._id} className="lg:h-36 p-3 text-gray-800 relative border-b flex flex-col lg:flex-row justify-between">
+                  <input type="checkbox" className='absolute top-4 right-4' onChange={()=>SelectedProduct(e._id)} checked={product_id.find((_id:string)=>(_id===e._id))}/>
                   <Link to={'/productdetails/' + e?.product?._id} className="flex gap-2 lg:gap-4 group">
                     <img className='h-20 lg:h-full rounded-md' src={process.env.REACT_APP_API_URL + '/' + e?.product?.images[0]?.url} alt="" />
-                    <div className='flex flex-col justify-between'>
-                      <div className='flex flex-col gap-5'>
+                    <div className='flex flex-col gap-1 justify-between'>
+                      <div className='flex flex-col gap-2'>
                         <p className='text-sm md:text-lg truncate group-hover:underline'>{e?.product?.name}</p>
                         <p className=' truncate text-sm'><span className='text-gray-500'>Flavour : </span><span className="bg-gray-100 rounded-md p-1 text-gray-700 font-medium text-xs">{e?.product?.category.name}</span></p>
                       </div>
                       <div className="flex items-center gap-2 ">
+                      <div className="bg-blue-500 rounded-sm w-14 px-2.5 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
                         <span className='flex items-center text-lg text-blue-500'><BiRupee className='text-md' />{e?.product?.discounts ? Math.ceil((100 - e?.product?.discounts) / 100 * e?.product?.price) * e?.count : e?.product?.price * e?.count}</span>
                         {e?.product?.discounts ?
                           <>
@@ -106,8 +108,8 @@ const Cart: FC<CartProps> = () => {
                     <RiDeleteBin6Line onClick={() => DeleteItem(e?._id)} className='text-xl text-red-500 cursor-pointer' />
                     <div className="flex gap-2 items-center">
                       {/*  */}
-                      <div className="flex bg-gray-100 px-2 py-1 rounded-md">
-                        <button className='cursor-text'>Qty :</button>
+                      <div className="flex bg-gray-100 text-sm px-1.5 py-0.5 rounded-sm">
+                        <button className='cursor-text text-sm'>Qty :</button>
                         <select value={e?.count} name="" id="" onChange={(el) => CartItemCount(e?._id, el.target.value)} className='outline-none cursor-pointer'>
                           <option value="1">1</option>
                           <option value="2">2</option>

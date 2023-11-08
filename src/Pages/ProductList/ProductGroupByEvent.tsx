@@ -37,13 +37,13 @@ const ProductGroupByEvent: FC<ProductGroupByEventProps> = () => {
             <div className="w-full md:px-8 flex flex-col gap-5">
                 <Occasion/>
                 {product?.map((e: any) => (
-                    <div key={e?.event?._id} className="bg-[#FEF6F7] md:rounded-md shadow-md p-3">
-                        <p className='text-2xl font-medium '>{e?.event?.name}</p>
+                    <div key={e?.event?._id} className="bg-white md:rounded-sm shadow-md p-3">
+                        <p className='text-2xl font-medium '>{e?.event?.name} <span className='text-lg'>({e?.products.length})</span></p>
                         <div className="pt-3 overflow-x-auto scrollbar-thin flex gap-2 md:gap-3">
                             {e?.products?.map((e: any) => (
-                                <Link to={'/productdetails/'+e._id} key={e._id} className="border w-1/5 min-w-[200px]  md:min-w-[220px] hover:shadow-xl cursor-pointer rounded-md bg-white">
-                                    <div className="w-full overflow-hidden rounded-t-md">
-                                    <img className='rounded-t-md max-h-44 w-full transition-all duration-200 hover:scale-105' src={process.env.REACT_APP_API_URL + '/' + e?.images[0]?.url} alt="" />
+                                <Link to={'/productdetails/'+e._id} key={e._id} className="border w-1/5 min-w-[200px]  md:min-w-[220px] hover:shadow-xl cursor-pointer rounded-sm bg-white">
+                                    <div className="w-full overflow-hidden rounded-t-sm">
+                                    <img className='rounded-t-sm max-h-44 w-full transition-all duration-200 hover:scale-105' src={process.env.REACT_APP_API_URL + '/' + e?.images[0]?.url} alt="" />
                                     </div>
                                     <div className="w-full p-1 flex flex-col gap-2">
                                         <p className="text-sm truncate">{e?.name}</p>
@@ -55,7 +55,7 @@ const ProductGroupByEvent: FC<ProductGroupByEventProps> = () => {
                                                     <span className='text-blue-500 text-sm font-medium'>{e?.discounts}% off</span></>
                                                     : ''}
                                             </div>
-                                            <div className="bg-blue-500 rounded-md px-1 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
+                                            <div className="bg-blue-500 rounded-sm px-1 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
                                         </div>
                                         <div className="flex justify-between items-center">
                                             <span className='text-xs font-medium'>{e?.category}</span>

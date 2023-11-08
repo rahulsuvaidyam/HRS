@@ -80,9 +80,9 @@ const Cart: FC<CartProps> = () => {
         products?.length >= 1 ?
           <div className="pt-12 md:pt-14 pb-16   w-full h-full px-0 lg:px-8 bg-gray-100 relative" >
             <div className="flex flex-col md:flex-row gap-3 h-full pt-1 md:pt-3 overflow-y-auto md:overscroll-y-none scrollbar-thin">
-            <div className="w-full md:w-[70%] md:overflow-y-auto md:scrollbar-thin md:border h-auto md:h-full flex flex-col bg-white">
+            <div className="w-full md:w-[70%] md:overflow-y-auto  shadow-md md:shadow-none md:scrollbar-thin md:border h-auto md:h-full flex flex-col bg-white">
               {products?.map((e: any) => (
-                <div key={e?._id} className="lg:h-40 p-3 text-gray-800 shadow-md md:shadow-none relative border-b flex flex-col lg:flex-row justify-between">
+                <div key={e?._id} className="lg:h-40 p-3 text-gray-800 relative border-b flex flex-col lg:flex-row justify-between">
                   <input type="checkbox" className='absolute right-4' onChange={()=>SelectedProduct(e._id)} checked={product_id.find((_id:string)=>(_id===e._id))}/>
                   <Link to={'/productdetails/' + e?.product?._id} className="flex gap-2 lg:gap-4 group">
                     <img className='h-20 lg:h-full rounded-md' src={process.env.REACT_APP_API_URL + '/' + e?.product?.images[0]?.url} alt="" />

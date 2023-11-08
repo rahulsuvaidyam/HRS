@@ -8,12 +8,14 @@ import { BiRupee } from 'react-icons/bi';
 import { TotalPriceWithDiscount } from '../../Services/TotalPrice';
 import Items from './Items';
 import CartLoader from '../../Components/Loader/CartLoader';
+import ChangeAddress from './ChangeAddress';
 
 
 interface BuyProductsProps { }
 
 const BuyProducts: FC<BuyProductsProps> = () => {
   const [currentStep, setcurrentStep] = useState(1)
+  const [open, setOpen] = useState<boolean>(false)
   const [editData, seteditData] = useState(null)
   const [totalPrice, settotalPrice] = useState([])
   const [loader, setLoader] = useState(true)
@@ -75,7 +77,7 @@ const BuyProducts: FC<BuyProductsProps> = () => {
                     {address?.district?.name} District ,{address?.state?.name} - {address?.pin_code}</p>
                 </div>
                 <div className='flex flex-col gap-3 justify-between h-full items-end'>
-                  <button className='border px-2 py-1 text-sm rounded-md bg-white'>Change</button>
+                  <button className='border px-2 py-1 text-sm rounded-md bg-white' onClick={()=>setOpen(true)}>Change</button>
                   <button onClick={EditAddress} className='border px-2 py-1 text-sm rounded-md bg-white'>Edit</button>
 
                 </div>
@@ -88,6 +90,8 @@ const BuyProducts: FC<BuyProductsProps> = () => {
               <button onClick={() => Order()} className='bg-blue-500 rounded-md md:rounded-none py-2 text-white px-8 md:px-16'>Continue</button>
             </div>}</div>
       </div>
+      {/* change address */}
+      <ChangeAddress {...{open, setOpen}}/>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import { useContext, type FC, useEffect, Fragment, useState } from 'react';
 import { DataContext } from '../Context/DataProvider';
 import { IoMdBasket } from 'react-icons/io'
-import { BiChevronDown } from 'react-icons/bi'
+import { BiChevronDown, BiSearch } from 'react-icons/bi'
 import { Menu, Transition } from '@headlessui/react'
 import { Link, useLocation } from 'react-router-dom';
 import avatarM from '../Assets/UserImage/avatarm.png'
@@ -45,7 +45,10 @@ const Navbar: FC<NavbarProps> = () => {
             <div className="w-full fixed top-0 h-12 md:h-14 z-50 bg-gray-200 shadow-sm">
                 <div className="px-2 md:px-8 flex justify-between items-center h-full max-w-[1600px] mx-auto w-full">
                     <Link to={'/'} className='text-xl font-medium cursor-pointer'>HRS</Link>
-                    <input className='outline-none w-3/5 md:w-3/6 py-1 rounded-md md:py-1.5 px-2' placeholder='Search for products' type="search" />
+                    <div className="w-3/5 md:w-3/6 relative">
+                    <input className='outline-none w-full py-1 rounded-md md:py-1.5 pl-7 pr-2' placeholder='Search for products' type="search" />
+                    <BiSearch className='absolute left-2 top-2.5 text-gray-700'/>
+                    </div>
                     <div className="flex items-center gap-3 md:gap-6">
                         {userDetails?.role === 'SELLER' ? '' : <Link to='/becomeseller' className='border hidden md:block px-3 py-2 font-medium text-sm hover:bg-white rounded-md'>BECOME A SELLER</Link>}
                         {userDetails?.role === 'SELLER' || userDetails?.role === 'ADMIN' ? <Link to='/dashboard' className='border px-3 py-2 font-medium text-sm hidden md:block bg-white rounded-md'>Dashboard</Link> : ''}

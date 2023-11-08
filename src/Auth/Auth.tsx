@@ -44,17 +44,11 @@ const Auth: FC<AuthProps> = () => {
                                         <div className="bg-gray-400 transition-all  duration-0 md:duration-500 order-1 md:order-2 w-full md:w-2/5 rounded-b-full rounded-bl-none h-12 md:h-full md:rounded-l-[35%] md:rounded-br-none flex  items-center justify-center">
                                             <button onClick={() => setOpen(false)} className={`bg-gray-200 text-gray-700 rop-shadow-lg px-6 rounded-md py-1 text-sm w-1/2  font-semibold`}>Sign In</button>
                                         </div>
-                                        </> :
+                                    </> :
                                         <><div className="bg-gray-400 transition-all  duration-0 md:duration-500 w-full md:w-2/5 rounded-b-full rounded-br-none h-12 md:h-full md:rounded-r-[35%] md:rounded-bl-none flex  items-center justify-center">
                                             <button onClick={() => setOpen(true)} className={`bg-gray-200 text-gray-700 rop-shadow-lg px-6 rounded-md py-1 text-sm w-1/2  font-semibold`}>Sign Up</button>
                                         </div>
                                             <div className="w-full h-full transition-all duration-0 md:duration-500 md:w-3/5 py-2 px-4"><Login /></div></>}
-
-                                    {/* <div className="flex justify-between items-center gap-3 px-6 py-3">
-                                        <button onClick={()=>setOpen(false)} className={`${open?'bg-gray-200 text-gray-700':'bg-blue-500 text-white'} rop-shadow-lg px-6 rounded-md py-1 text-sm w-1/2  font-semibold`}>Sign In</button>
-                                        
-                                    </div>
-                                    {open?<Register/>: <Login/>} */}
                                 </Dialog.Panel>
                             </Transition.Child>
                         </div>

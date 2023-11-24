@@ -67,7 +67,7 @@ const ProductList: FC<ProductListProps> = () => {
                           <span className='text-blue-500 text-sm font-medium'>{e?.discounts}% off</span></>
                           : ''}
                       </div>
-                      <div className="bg-blue-500 rounded-md px-1 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
+                      <div className="bg-blue-500 rounded-sm px-1 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className='text-xs font-medium'>{e?.category?.name}</span>

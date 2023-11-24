@@ -64,12 +64,34 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
             toast.error(error.response?.data?.message)
         }
     }
-    const BuyNow = (e: any) => {
-        navigate('/buy')
+    const BuyNow = async(e: any) => {
+        // sessionStorage.setItem('product_id',JSON.stringify([e]))
+        try {
+            
+            const response = await Http({
+                url: '/cart',
+                method: 'post',
+                data: { product: e }
+            });
+            if (response?.data?.message === 'Request Successful') {
+                // navigate('/cart')
+                navigate('/buy')
+            } else {
+                toast.success(response?.data?.message)
+                setIsRender(!isRender)
+                setTimeout(() => {
+                    navigate('/buy')
+                    // navigate('/cart')
+                }, 100);
+            }
+
+        } catch (error: any) {
+            toast.error(error.response?.data?.message)
+        }
     }
     return (
         <>
-            <div className="pt-12 md:pt-14 w-full h-full max-w-[1600px] mx-auto">
+            <div className="pt-12 md:pt-14 w-full h-full max-w-[1200px] mx-auto">
                 {loading ? <Spinner loading={loading} /> :
                     <div className="flex flex-col md:flex-row w-full h-full md:pt-4">
                         <div className="w-full md:w-1/2 lg:w-2/5 md:h-full md:p-2">
@@ -106,7 +128,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                         <div className="w-full md:w-1/2 lg:w-3/5 p-2 flex flex-col gap-1 relative pb-12">
                             <p className='text-xl'>{products.name}</p>
                             <div className="flex items-center gap-2">
-                                <div className="bg-blue-500 rounded-md px-1 py-0.5 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
+                                <div className="bg-blue-500 px-1 rounded-sm text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
                                 <div className="text-sm text-gray-700 font-medium">456 Reviews</div>
                             </div>
                             <div className="flex items-center gap-2 ">

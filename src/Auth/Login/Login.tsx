@@ -5,6 +5,7 @@ import { DataContext } from '../../Context/DataProvider';
 import { toast } from 'react-toastify';
 import Text from '../../Components/FormControl/Text';
 import Password from '../../Components/FormControl/Password';
+import * as Yup from 'yup';
 
 interface LoginProps { }
 interface FormValues {
@@ -20,6 +21,12 @@ const initialValues: FormValues = {
 const Login: FC<LoginProps> = () => {
 
     const {setLogInPage,setIsRender} = useContext(DataContext)
+
+    const validationSchema = Yup.object().shape({
+        username: Yup.string().required('Name is required'),
+        password: Yup.string().min(8, 'Password must be at least 8 characters').required('Password is required'),
+      });
+
     const onsubmit = async (values: any) => {
         try {
             const response = await Http({
@@ -47,7 +54,7 @@ const Login: FC<LoginProps> = () => {
               <p className='text-3xl text-center font-medium pb-3 sm:pb-0'>Sign In</p>
              <Formik
                 initialValues={initialValues}
-                //   validate={validate}
+                validationSchema={validationSchema}
                 onSubmit={onsubmit}>
                 <Form className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <Text name='username' label='Enter Email/Mobile number'/>

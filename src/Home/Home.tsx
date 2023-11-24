@@ -10,7 +10,7 @@ const Home: FC<HomeProps> = () => {
 
     return (
         <>
-           <div className="pt-12 md:pt-14 max-w-[1600px] mx-auto">
+           <div className="pt-12 md:pt-14 bg-[#FEF6F7] max-w-[1600px] mx-auto">
             <ShowCarousel/>
             <CategoryList/>
             <ProductGroupByEvent/>

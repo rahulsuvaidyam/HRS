@@ -7,11 +7,13 @@ import { DataContext } from '../../Context/DataProvider';
 interface ChangeAddressProps {
     open: boolean,
     setOpen: any
+    slected:any
+    setSelected:any
 }
 
-const ChangeAddress: FC<ChangeAddressProps> = ({ open, setOpen }) => {
+const ChangeAddress: FC<ChangeAddressProps> = ({ open, setOpen ,slected,setSelected}) => {
     const [Address, setAddress] = useState<any[]>([])
-    const [slected, setSelected] = useState<any>()
+   
     const { isRender,setIsRender } = useContext(DataContext);
 
     const cancelButtonRef = useRef(null)
@@ -87,7 +89,7 @@ const ChangeAddress: FC<ChangeAddressProps> = ({ open, setOpen }) => {
                                                     <p className='flex gap-3'>{e?.house_name} , {e?.road_name} ,
                                                         {e?.district?.name} District ,{e?.state?.name} - {e?.pin_code}</p>
                                                 </div>
-                                                <input onChange={()=>console.log('first')}  checked={slected === e._id} type="radio" name='addresh'/>
+                                                <input  checked={slected === e._id} type="radio" name='addresh'/>
                                             </div>
                                         ))}
                                     </div>

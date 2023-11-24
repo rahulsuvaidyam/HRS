@@ -32,7 +32,7 @@ const Occasion: FC<OccasionProps> = () => {
     }, [])
     return (
         <>
-            <div className="bg-[#FEF6F7] md:rounded-md shadow-md p-3 w-full h-full">
+            <div className="bg-white md:rounded-md shadow-md p-3 w-full h-full">
                 <p className='text-2xl pt-2 pb-3 font-medium truncate'>Celebrate Special Occasions</p>
                 <div className="w-full flex flex-col md:flex-row gap-3">
                     {occasions?.map((e: any) => (

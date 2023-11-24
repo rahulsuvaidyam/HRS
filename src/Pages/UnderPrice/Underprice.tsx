@@ -19,7 +19,7 @@ const UnderPrice: FC<UnderPriceProps> = () => {
     return (
         <>
           <div className="w-full md:px-8 pt-5">
-            <div className="bg-[#FEF6F7] md:rounded-md shadow-md p-3">
+            <div className="bg-white md:rounded-sm shadow-md p-3">
                 <p className='text-2xl font-medium '>Budget Buys</p>
                 <div className="flex gap-6 pt-3 h-32 md:h-44 items-center overflow-x-auto scrollbar-thin">
                     {data?.map((e:any)=>(

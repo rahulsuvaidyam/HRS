@@ -22,7 +22,7 @@ const Items: FC<ItemsProps> = ({settotalPrice}) => {
               const response = await Http({
                 url: '/carttobuy',
                 method: 'get',
-                data: { _id: JSON.parse(sessionStorage.getItem('product_id') ?? '{}') }
+                data: { _id: JSON.parse(sessionStorage.getItem('product_id') ?? '[]') }
               });
               setProducts(response?.data?.data)
               // setLoading(false)
@@ -52,15 +52,15 @@ const Items: FC<ItemsProps> = ({settotalPrice}) => {
           <div className="flex flex-col md:flex-row gap-3 pt-1 md:pt-3 ">
             <div className="w-full md:w-[70%] md:border-x md:border-t h-auto shadow-md md:shadow-none flex flex-col bg-white">
               {products?.map((e: any) => (
-                <div key={e?._id} className="lg:h-40 p-3 text-gray-800 relative border-b flex flex-col lg:flex-row justify-between">
+                <div key={e?._id} className="lg:h-32 p-3 text-gray-800 relative border-b flex flex-col lg:flex-row justify-between">
                   <div className="flex gap-2 lg:gap-4">
                     <img className='h-20 lg:h-full rounded-md' src={process.env.REACT_APP_API_URL + '/' + e?.product?.images[0]?.url} alt="" />
                     <div className='flex flex-col justify-between'>
-                        <div className='flex flex-col gap-2 md:gap-5'>
-                          <p className='text-sm md:text-lg truncate '>{e?.product?.name}</p>
+                        <div className='flex flex-col gap-1'>
+                          <p className='text-sm md:text-base truncate '>{e?.product?.name}</p>
                           <p className=' truncate text-sm'><span className='text-gray-500'>Flavour : </span><span className="bg-gray-100 rounded-md p-1 text-gray-700 font-medium text-xs">{e?.product?.category.name}</span></p>
                           <div className='flex gap-2'>
-                        <div className="bg-blue-500 rounded-md w-14 px-2.5 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
+                        <div className="bg-blue-500 rounded-sm px-2 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
                           <span className='text-gray-600 text-sm'>(3434)</span>
                           </div>
                         </div>
@@ -74,7 +74,7 @@ const Items: FC<ItemsProps> = ({settotalPrice}) => {
                         </div>
                       </div>
                   </div>
-                  <div className="flex absolute right-2 bottom-2  bg-gray-100 px-1 py-1 rounded-md">
+                  <div className="flex absolute right-2 bottom-2  bg-gray-100 px-1 py-0.5 rounded-sm">
                       <button className='text-sm cursor-text'>Qty :</button>
                       <select value={e?.count} onChange={(el) => ItemCount(e?._id, el.target.value)} className='outline-none cursor-pointer text-sm bg-transparent'>
                         <option value="1">1</option>

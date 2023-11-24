@@ -22,7 +22,7 @@ const Items: FC<ItemsProps> = ({settotalPrice}) => {
               const response = await Http({
                 url: '/carttobuy',
                 method: 'get',
-                data: { _id: JSON.parse(sessionStorage.getItem('product_id') ?? '{}') }
+                data: { _id: JSON.parse(sessionStorage.getItem('product_id') ?? '[]') }
               });
               setProducts(response?.data?.data)
               // setLoading(false)

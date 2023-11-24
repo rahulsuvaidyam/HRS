@@ -1,19 +1,20 @@
 import { useContext, type FC, useEffect, Fragment, useState } from 'react';
 import { DataContext } from '../Context/DataProvider';
 import { IoMdBasket } from 'react-icons/io'
-import { BiChevronDown, BiSearch } from 'react-icons/bi'
+import { BiChevronDown } from 'react-icons/bi'
 import { Menu, Transition } from '@headlessui/react'
 import { Link, useLocation } from 'react-router-dom';
 import avatarM from '../Assets/UserImage/avatarm.png'
 import avatarF from '../Assets/UserImage/avatarf.jpeg'
 import Http from '../Services/Http';
+import GlobalSearch from './GlobalSearch/GlobalSearch';
 
 interface NavbarProps { }
 
 const Navbar: FC<NavbarProps> = () => {
     const [count, setCount] = useState(0)
+    const [userDetails, setUserDetails] = useState(JSON.parse(sessionStorage.getItem('userDetails') ?? '{}'))
     const { setLogInPage, logInPage, setIsRender, isRender } = useContext(DataContext)
-    let userDetails: any = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}')
 
     const { pathname } = useLocation()
     const Signout = () => {
@@ -31,24 +32,25 @@ const Navbar: FC<NavbarProps> = () => {
                 setCount(response?.data?.data)
             } catch (error: any) {
                 console.log(error.response?.data?.message)
+                setCount(0)
             }
         }
-        GetCart()
-    }, [isRender])
-    useEffect(() => {
+        if(userDetails?.name){
+            GetCart()
+        }
         // eslint-disable-next-line
-        userDetails = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}')
+    }, [isRender,userDetails])
+    useEffect(() => {
+        // eslint-disable-next-linex
+        setUserDetails(JSON.parse(sessionStorage.getItem('userDetails') ?? '{}'))
         // eslint-disable-next-line
     }, [isRender])
     return (
         <>
-            <div className="w-full fixed top-0 h-12 md:h-14 z-50 bg-gray-200 shadow-sm">
+            <div className="w-full fixed top-0 h-12 md:h-14 z-40 bg-gray-200 shadow-sm">
                 <div className="px-2 md:px-8 flex justify-between items-center h-full max-w-[1600px] mx-auto w-full">
-                    <Link to={'/'} className='text-xl font-medium cursor-pointer'>HRS</Link>
-                    <div className="w-3/5 md:w-3/6 relative">
-                    <input className='outline-none w-full py-1 rounded-md md:py-1.5 pl-7 pr-2' placeholder='Search for products' type="search" />
-                    <BiSearch className='absolute left-2 top-2.5 text-gray-700'/>
-                    </div>
+                    <Link to={'/'} className='text-xl font-medium text-blue-500 cursor-pointer'>HRS</Link>
+                   <GlobalSearch/>
                     <div className="flex items-center gap-3 md:gap-6">
                         {userDetails?.role === 'SELLER' ? '' : <Link to='/becomeseller' className='border hidden md:block px-3 py-2 font-medium text-sm hover:bg-white rounded-md'>BECOME A SELLER</Link>}
                         {userDetails?.role === 'SELLER' || userDetails?.role === 'ADMIN' ? <Link to='/dashboard' className='border px-3 py-2 font-medium text-sm hidden md:block bg-white rounded-md'>Dashboard</Link> : ''}

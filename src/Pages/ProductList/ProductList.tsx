@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import Spinner from '../../Components/Loader/Spinner';
 import DataNotFound from '../../Components/AlertPage/DataNotFound';
+import { RiCake2Line } from 'react-icons/ri';
 
 interface ProductListProps { }
 
@@ -47,12 +48,12 @@ const ProductList: FC<ProductListProps> = () => {
   }, [])
   return (
     <>
-      <div className="pt-12 md:pt-14 w-full h-full max-w-[1600px] mx-auto">
+      <div className="pt-12 md:pt-14 w-full h-full pb-3 max-w-[1600px] mx-auto">
         {/* <Filter/> */}
         {loading ? <Spinner loading={loading} /> :
           product.length >= 1?
           <div className="w-full h-full pt-2 px-2 md:px-8 ">
-            <div className="w-full bg-gray-100 p-2 rounded-md text-xl font-medium">Chocolate Cake</div>
+            <div className="w-full px-2 pt-1 rounded-md text-xl flex items-center gap-3 font-medium"><RiCake2Line className='text-3xl'/>{category!=='null'?product[0]?.category?.name : product[0]?.event?.name} Cake </div>
             <div className="grid pt-3 grid-cols-2 gap-x-2 md:gap-x-6 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {product?.map((e: any) => (
                 <Link to={'/productdetails/' + e._id} key={e._id} className="border hover:shadow-xl cursor-pointer rounded-sm">

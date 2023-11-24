@@ -19,6 +19,7 @@ import Carousels from '../Dashboard/Carousels/Carousels';
 import Personal from '../Pages/Profile/Personal';
 import Orders from '../Pages/Profile/Orders';
 import Address from '../Pages/Profile/Address/Address';
+import Footer from '../Pages/Footer/Footer';
 
 interface RouterProps { }
 
@@ -26,7 +27,7 @@ const Router: FC<RouterProps> = () => {
 
   return (
     <>
-      <div className="w-full h-screen">
+      <div className="w-full h-screen overflow-y-auto scrollbar-none">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -47,6 +48,7 @@ const Router: FC<RouterProps> = () => {
             <Route path="carousel" element={<UserProtected Component={Carousels} />} />
           </Route>
         </Routes>
+        <Footer/>
         <Auth />
       </div>
     </>

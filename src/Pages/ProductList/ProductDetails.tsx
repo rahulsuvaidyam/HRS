@@ -14,6 +14,7 @@ interface ProductDetailsProps { }
 const ProductDetails: FC<ProductDetailsProps> = () => {
 
     const [products, setProduct] = useState<any>({})
+    const [weight, setWeight] = useState<any>(1)
     const [imageSelected, setimageSelected] = useState<any>({})
     let [loading, setLoading] = useState<boolean>(true);
     const { isRender, setIsRender } = useContext(DataContext)
@@ -64,10 +65,10 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
             toast.error(error.response?.data?.message)
         }
     }
-    const BuyNow = async(e: any) => {
+    const BuyNow = async (e: any) => {
         // sessionStorage.setItem('product_id',JSON.stringify([e]))
         try {
-            
+
             const response = await Http({
                 url: '/cart',
                 method: 'post',
@@ -91,7 +92,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
     }
     return (
         <>
-            <div className="pt-12 md:pt-14 w-full h-full max-w-[1200px] mx-auto">
+            <div className="pt-12 md:pt-14 pb-3 w-full h-full max-w-[1200px] mx-auto">
                 {loading ? <Spinner loading={loading} /> :
                     <div className="flex flex-col md:flex-row w-full h-full md:pt-4">
                         <div className="w-full md:w-1/2 lg:w-2/5 md:h-full md:p-2">
@@ -139,7 +140,21 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                                         <span className='text-blue-500 font-medium'>{products?.discounts}% off</span>
                                     </> : ''}
                             </div>
-                            <div className="w-full h-16 truncate">
+                            <div className="flex items-center gap-3">
+                                <div className="flex flex-col ">
+                                    <div className={`border-2 ${weight === 1 ? 'border-blue-500 text-blue-500' : 'border-gray-500 text-gray-700'} w-16 rounded-md h-10 cursor-pointer flex items-center justify-center `}>
+                                        1Kg
+                                    </div>
+                                    <p className='flex items-center'><BiRupee className='text-md' />{products?.price}</p>
+                                </div>
+                                <div className="flex flex-col ">
+                                    <div className={`border-2 ${weight === 2 ? 'border-blue-500 text-blue-500' : 'border-gray-500 text-gray-700'} w-16 rounded-md h-10 cursor-pointer flex items-center justify-center `}>
+                                        2Kg
+                                    </div>
+                                    <p className='flex items-center'><BiRupee className='text-md' />{products?.price*2}</p>
+                                </div>
+                            </div>
+                            <div className="w-full">
                                 <p className='text-xl font-medium to-gray-500'>Product Description</p>
                                 <p>{products?.description}</p>
                             </div>

@@ -27,17 +27,17 @@ const LeftBar: FC<LeftBarProps> = () => {
                     </div>
                     <div className=" hidden md:block pt-2 w-full h-full">
                         <div className="w-full bg-gray-50 h-full  flex flex-col gap-2">
-                            <Link className='py-3 hover:text-blue-500 px-4 border-b font-medium flex items-center gap-2' to={'order'}>
-                            <MdStore className='text-blue-500 text-xl' />Orders
+                            <Link className='py-3 hover:text-primary px-4 border-b font-medium flex items-center gap-2' to={'order'}>
+                            <MdStore className='text-primary text-xl' />Orders
                             </Link>
                             <div className='w-full py-2  border-b'>
                                 <p className='font-medium px-4 w-full'>Personal Setting</p>
                                 <div className="pl-5 py-1 w-full flex flex-col gap-2">
-                                    <Link to={'personal'} className='text-sm w-full hover:text-blue-500 flex items-center gap-2'>
-                                        <BiUser className='text-blue-500 text-lg' />Personal Information
+                                    <Link to={'personal'} className='text-sm w-full hover:text-primary flex items-center gap-2'>
+                                        <BiUser className='text-primary text-lg' />Personal Information
                                     </Link>
-                                    <Link to={'address'} className='flex gap-2 py-1 hover:text-blue-500 items-center text-sm'>
-                                        <GoLocation className='text-blue-500 text-lg' />Saved Address
+                                    <Link to={'address'} className='flex gap-2 py-1 hover:text-primary items-center text-sm'>
+                                        <GoLocation className='text-primary text-lg' />Saved Address
                                     </Link>
                                 </div>
 

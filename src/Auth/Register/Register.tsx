@@ -56,7 +56,7 @@ const Register: FC<RegisterProps> = () => {
                         <Number name='phone' label='Enter Phone Number' />
                         <Password name='password' label='Enter Password' />
                         <Gender />
-                        <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Sign Up</button>
+                        <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-primary text-white'>Sign Up</button>
                     </Form>
                 </Formik>
             </div>

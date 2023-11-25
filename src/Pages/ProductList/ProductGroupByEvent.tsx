@@ -52,10 +52,10 @@ const ProductGroupByEvent: FC<ProductGroupByEventProps> = () => {
                                                 <span className='flex items-center'><BiRupee className='text-lg' />{e?.discounts ? Math.ceil((100 - e?.discounts) / 100 * e?.price) : e?.price}</span>
                                                 {e?.discounts ? <>
                                                     <del className='flex items-center text-sm text-gray-700'><BiRupee className='text-md' />{e?.price}</del>
-                                                    <span className='text-blue-500 text-sm font-medium'>{e?.discounts}% off</span></>
+                                                    <span className='text-primary text-sm font-medium'>{e?.discounts}% off</span></>
                                                     : ''}
                                             </div>
-                                            <div className="bg-blue-500 rounded-sm px-1 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
+                                            <div className="bg-primary rounded-sm px-1 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
                                         </div>
                                         <div className="flex justify-between items-center">
                                             <span className='text-xs font-medium'>{e?.category}</span>

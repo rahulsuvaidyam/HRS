@@ -49,7 +49,7 @@ const Navbar: FC<NavbarProps> = () => {
         <>
             <div className="w-full fixed top-0 h-12 md:h-14 z-40 bg-gray-200 shadow-sm">
                 <div className="px-2 md:px-8 flex justify-between items-center h-full max-w-[1600px] mx-auto w-full">
-                    <Link to={'/'} className='text-xl font-medium text-blue-500 cursor-pointer'>HRS</Link>
+                    <Link to={'/'} className='text-xl font-medium text-primary cursor-pointer'>HRS</Link>
                    <GlobalSearch/>
                     <div className="flex items-center gap-3 md:gap-6">
                         {userDetails?.role === 'SELLER' ? '' : <Link to='/becomeseller' className='border hidden md:block px-3 py-2 font-medium text-sm hover:bg-white rounded-md'>BECOME A SELLER</Link>}

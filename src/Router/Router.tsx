@@ -18,7 +18,7 @@ import BuyProducts from '../Pages/BuyProducts/BuyProducts';
 import Carousels from '../Dashboard/Carousels/Carousels';
 import Personal from '../Pages/Profile/Personal';
 import Orders from '../Pages/Profile/Orders';
-import Address from '../Pages/Profile/Address/Address';
+import Address from '../Pages/Profile/Address/Address'; 
 
 interface RouterProps { }
 
@@ -26,7 +26,7 @@ const Router: FC<RouterProps> = () => {
 
   return (
     <>
-      <div className="w-full h-screen">
+      <div className="w-full h-screen overflow-y-auto scrollbar-none">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -37,7 +37,8 @@ const Router: FC<RouterProps> = () => {
           </Route>
           <Route path="/cart" element={<Protected Component={Cart} />} />
           <Route path="/buy" element={<Protected Component={BuyProducts} />} />
-          <Route path="/productlist/:category/:event" element={<ProductList />} />
+          <Route path="/productlist/category/:category" element={<ProductList />} />
+          <Route path="/productlist/event/:event" element={<ProductList />} />
           <Route path="/productdetails/:product" element={<ProductDetails />} />
           <Route path="/becomeseller" element={<SellerRegister />} />
           <Route path="/dashboard" element={<UserProtected Component={Dashboard} />} >

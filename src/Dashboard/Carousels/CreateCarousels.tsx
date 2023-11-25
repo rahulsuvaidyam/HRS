@@ -117,7 +117,7 @@ const CreateCarousels: FC<CreateCarouselsProps> = () => {
                     ))}
                 </div>}
                     <Image onImageUpload={uploadImage}/>
-                    <button type='submit' disabled={image ? false : true} className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>{carouselEdit?.name?'Update':'Save'}</button>
+                    <button type='submit' disabled={image ? false : true} className='border w-full font-medium px-4 py-1 mt-2 bg-primary text-white'>{carouselEdit?.name?'Update':'Save'}</button>
                 </Form>
             </Formik>
         </>

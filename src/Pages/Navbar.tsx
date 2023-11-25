@@ -13,9 +13,9 @@ interface NavbarProps { }
 
 const Navbar: FC<NavbarProps> = () => {
     const [count, setCount] = useState(0)
-    const [userDetails, setUserDetails] = useState(JSON.parse(sessionStorage.getItem('userDetails') ?? '{}'))
+    // const [userDetails, setUserDetails] )
     const { setLogInPage, logInPage, setIsRender, isRender } = useContext(DataContext)
-
+    let userDetails = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}')
     const { pathname } = useLocation()
     const Signout = () => {
         sessionStorage.clear()
@@ -35,16 +35,14 @@ const Navbar: FC<NavbarProps> = () => {
                 setCount(0)
             }
         }
-        if(userDetails?.name){
             GetCart()
-        }
         // eslint-disable-next-line
     }, [isRender,userDetails])
     useEffect(() => {
         // eslint-disable-next-linex
-        setUserDetails(JSON.parse(sessionStorage.getItem('userDetails') ?? '{}'))
+        userDetails = JSON.parse(sessionStorage.getItem('userDetails') ?? '{}')
         // eslint-disable-next-line
-    }, [isRender])
+    }, [isRender,])
     return (
         <>
             <div className="w-full fixed top-0 h-12 md:h-14 z-40 bg-gray-200 shadow-sm">

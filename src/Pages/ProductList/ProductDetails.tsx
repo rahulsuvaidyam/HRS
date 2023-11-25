@@ -58,7 +58,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                 setIsRender(!isRender)
                 setTimeout(() => {
                     navigate('/cart')
-                }, 5000);
+                }, 2000);
             }
 
         } catch (error: any) {

@@ -52,28 +52,28 @@ const LeftBar: FC<LeftBarProps> = () => {
                 <div className="flex gap-3 flex-col">
                     <div className="grid grid-cols-2 bg-gray-50 shadow-md py-3 px-2 gap-2 ">
                         <Link to={'order'} className="h-8 border rounded-md px-2 text-sm flex items-center gap-2">
-                            <MdStore className='text-blue-500 text-lg' />Orders
+                            <MdStore className='text-primary text-lg' />Orders
                         </Link>
                         <Link to={'/cart'} className="h-8 border rounded-md px-2 text-sm flex items-center gap-2">
-                            <FaOpencart className='text-blue-500 text-lg' />Cart
+                            <FaOpencart className='text-primary text-lg' />Cart
                         </Link>
                     </div>
                     <div className="w-full bg-gray-50 shadow-md px-2 py-3 flex flex-col gap-2">
                         <p>Personal settings</p>
-                        <Link to={'personal'} className='flex gap-2 py-1 hover:text-blue-500 items-center text-sm'>
-                            <BiUser className='text-blue-500 text-lg' />Edit Profile
+                        <Link to={'personal'} className='flex gap-2 py-1 hover:text-primary items-center text-sm'>
+                            <BiUser className='text-primary text-lg' />Edit Profile
                         </Link>
-                        <Link to={'address'} className='flex gap-2 py-1 hover:text-blue-500 items-center text-sm'>
-                            <GoLocation className='text-blue-500 text-lg' />Saved Address
+                        <Link to={'address'} className='flex gap-2 py-1 hover:text-primary items-center text-sm'>
+                            <GoLocation className='text-primary text-lg' />Saved Address
                         </Link>
                     </div>
                     <div className="w-full bg-gray-50 shadow-md px-2 py-3 flex flex-col gap-2">
                         <p>Patner with hrs</p>
                         {userDetails?.role === 'SELLER' || userDetails?.role === 'ADMIN' ?
                             <Link to='/dashboard' className=' text-sm flex gap-2 items-center hover:to-blue-500'>
-                                <MdOutlineDashboard className='text-blue-500 text-lg' />Dashboard</Link> :
-                            <Link to={'/becomeseller'} className='flex gap-2 py-1 hover:text-blue-500 items-center text-sm'>
-                                <BiUser className='text-blue-500 text-lg' />Sell On HRS
+                                <MdOutlineDashboard className='text-primary text-lg' />Dashboard</Link> :
+                            <Link to={'/becomeseller'} className='flex gap-2 py-1 hover:text-primary items-center text-sm'>
+                                <BiUser className='text-primary text-lg' />Sell On HRS
                             </Link>}
                     </div>
                 </div>

@@ -59,7 +59,7 @@ const SellerRegister: FC<SellerRegisterProps> = () => {
     }
     return (
         <>
-           <div className="pt-12 md:pt-14 flex flex-col px-12 h-full">
+           <div className="pt-12 md:pt-14 flex flex-col md:px-12 h-full">
             <p className='text-center pt-5 text-xl uppercase'>Sign up for seller</p>
            <Formik
                 initialValues={initialValues}

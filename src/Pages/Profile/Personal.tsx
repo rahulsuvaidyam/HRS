@@ -56,8 +56,8 @@ const Personal: FC<PersonalProps> = () => {
                     <Number disabled={edit} name='phone' label='Enter Phone Number' />
                     <Gender disabled={edit} />
                     <div className="pt-4 ">
-                        {edit ? <span onClick={() => setEdit(false)} className='border block md:inline-block text-center cursor-pointer font-medium px-6 py-2 bg-blue-500 text-sm text-white'>Edit Profile</span> :
-                            <button type='submit' className='border w-full md:w-auto font-medium px-10 text-sm py-1.5 bg-blue-500 text-white'>Save</button>}
+                        {edit ? <span onClick={() => setEdit(false)} className='border block md:inline-block text-center cursor-pointer font-medium px-6 py-2 bg-primary text-sm text-white'>Edit Profile</span> :
+                            <button type='submit' className='border w-full md:w-auto font-medium px-10 text-sm py-1.5 bg-primary text-white'>Save</button>}
                     </div>
                 </Form>
             </Formik>

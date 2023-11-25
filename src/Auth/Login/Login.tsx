@@ -59,7 +59,7 @@ const Login: FC<LoginProps> = () => {
                 <Form className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <Text name='username' label='Enter Email/Mobile number'/>
                     <Password name='password' label='Enter Password'/>
-                    <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Sign In</button>
+                    <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-primary text-white'>Sign In</button>
                 </Form>
             </Formik>
              </div>

@@ -76,7 +76,7 @@ const SellerRegister: FC<SellerRegisterProps> = () => {
                    <Password name='password' label='Enter Password'/>
                     <Gender/>
                   </div>
-                    <button type='submit' className='border w-1/2 font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>Create</button>
+                    <button type='submit' className='border w-1/2 font-medium px-4 py-1 mt-2 bg-primary text-white'>Create</button>
                 </Form>
             </Formik>
            </div>

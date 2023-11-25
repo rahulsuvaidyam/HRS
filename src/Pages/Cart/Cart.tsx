@@ -93,8 +93,8 @@ const Cart: FC<CartProps> = () => {
                         <p className=' truncate text-sm'><span className='text-gray-500'>Flavour : </span><span className="bg-gray-100 rounded-md p-1 text-gray-700 font-medium text-xs">{e?.product?.category.name}</span></p>
                       </div>
                       <div className="flex items-center gap-2 ">
-                      <div className="bg-blue-500 rounded-sm w-14 px-2.5 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
-                        <span className='flex items-center text-lg text-blue-500'><BiRupee className='text-md' />{e?.product?.discounts ? Math.ceil((100 - e?.product?.discounts) / 100 * e?.product?.price) * e?.count : e?.product?.price * e?.count}</span>
+                      <div className="bg-primary rounded-sm w-14 px-2.5 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
+                        <span className='flex items-center text-lg text-primary'><BiRupee className='text-md' />{e?.product?.discounts ? Math.ceil((100 - e?.product?.discounts) / 100 * e?.product?.price) * e?.count : e?.product?.price * e?.count}</span>
                         {e?.product?.discounts ?
                           <>
                             <del className='flex items-center text-sm text-gray-700'><BiRupee className='text-base' />{e?.product?.price * e?.count}</del>
@@ -126,7 +126,7 @@ const Cart: FC<CartProps> = () => {
                <p  className='text-lg text-gray-600 h-12 border-b flex items-center px-4'>PRICE DETAILS</p>
                 <div className="flex flex-col gap-5 p-4 border-b">
                   <p className=' flex justify-between items-center'>Price <span className='flex items-center'><BiRupee className='text-base' />{TotalPrice(products,product_id)}</span></p>
-                  <p className=' flex justify-between items-center'>Discounts <span className='flex items-center text-blue-500'>-<BiRupee className='text-base' />{Discounts(products,product_id)}</span></p>
+                  <p className=' flex justify-between items-center'>Discounts <span className='flex items-center text-primary'>-<BiRupee className='text-base' />{Discounts(products,product_id)}</span></p>
                   <p className=' flex justify-between items-center'>Delevery Charge <del className='flex items-center text-gray-500'><BiRupee className='text-base' />40</del></p>
                 </div>
                 <p className=' flex justify-between px-4 py-2 font-medium'>Tolal Price <span className='flex items-center'><BiRupee className='text-base' />{TotalPriceWithDiscount(products,product_id)}</span></p>
@@ -135,7 +135,7 @@ const Cart: FC<CartProps> = () => {
             </div>
            {product_id.length > 0 &&  <div className="fixed w-full left-0 bg-white h-16 z-50 bottom-0 px-2 md:px-16 flex justify-between items-center">
               <p className='text-xl text-gray-700 flex items-center'>Total Price : <span className='text-lg flex items-center ' ><BiRupee /> {TotalPriceWithDiscount(products,product_id)}</span></p>
-              <Link onClick={() => setIsRender(!isRender)} to='/buy' className='text-white bg-blue-500 px-4 py-2 md:px-10'>PLACE ORDER</Link>
+              <Link onClick={() => setIsRender(!isRender)} to='/buy' className='text-white bg-primary px-4 py-2 md:px-10'>PLACE ORDER</Link>
             </div>}
           </div> : <CartAlert />}
     </>

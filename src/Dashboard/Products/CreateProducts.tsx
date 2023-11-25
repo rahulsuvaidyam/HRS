@@ -154,7 +154,7 @@ const CreateProducts: FC<CreateProductsProps> = () => {
                     ))}
                 </div>}
                     <Image onImageUpload={uploadImage}/>
-                    <button type='submit' disabled={image ? false : true} className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>{productEdit?.name?'Update':'Save'}</button>
+                    <button type='submit' disabled={image ? false : true} className='border w-full font-medium px-4 py-1 mt-2 bg-primary text-white'>{productEdit?.name?'Update':'Save'}</button>
                 </Form>
             </Formik>
         </>

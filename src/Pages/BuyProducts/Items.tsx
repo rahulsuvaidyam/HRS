@@ -58,14 +58,14 @@ const Items: FC<ItemsProps> = ({settotalPrice}) => {
                     <div className='flex flex-col justify-between'>
                         <div className='flex flex-col gap-1'>
                           <p className='text-sm md:text-base truncate '>{e?.product?.name}</p>
-                          <p className=' truncate text-sm'><span className='text-gray-500'>Flavour : </span><span className="bg-gray-100 rounded-md p-1 text-gray-700 font-medium text-xs">{e?.product?.category.name}</span></p>
+                          <p className=' truncate text-sm'><span className='text-gray-500'>Flavour : </span><span className="bg-gray-100 rounded-md p-1 text-secondary font-medium text-xs">{e?.product?.category.name}</span></p>
                           <div className='flex gap-2'>
-                        <div className="bg-blue-500 rounded-sm px-2 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
-                          <span className='text-gray-600 text-sm'>(3434)</span>
+                        <div className="bg-primary rounded-sm px-2 text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
+                          <span className='text-tatary text-sm'>(3434)</span>
                           </div>
                         </div>
                         <div className="flex items-center gap-2 pt-2">
-                          <span className='flex items-center text-lg text-blue-500'><BiRupee className='text-md' />{e?.product?.discounts ? Math.ceil((100 - e?.product?.discounts) / 100 * e?.product?.price) * e?.count : e?.product?.price * e?.count}</span>
+                          <span className='flex items-center text-lg text-primary'><BiRupee className='text-md' />{e?.product?.discounts ? Math.ceil((100 - e?.product?.discounts) / 100 * e?.product?.price) * e?.count : e?.product?.price * e?.count}</span>
                           {e?.product?.discounts ?
                             <>
                               <del className='flex items-center text-sm text-gray-400'><BiRupee className='text-base' />{e?.product?.price * e?.count}</del>
@@ -90,7 +90,7 @@ const Items: FC<ItemsProps> = ({settotalPrice}) => {
                <p  className='text-lg text-gray-600 h-12 border-b flex items-center px-4'>PRICE DETAILS</p>
                 <div className="flex flex-col gap-5 p-4 border-b">
                   <p className=' flex justify-between items-center'>Price <span className='flex items-center'><BiRupee className='text-base' />{TotalPrice(products)}</span></p>
-                  <p className=' flex justify-between items-center'>Discounts <span className='flex items-center text-blue-500'>-<BiRupee className='text-base' />{Discounts(products)}</span></p>
+                  <p className=' flex justify-between items-center'>Discounts <span className='flex items-center text-primary'>-<BiRupee className='text-base' />{Discounts(products)}</span></p>
                   <p className=' flex justify-between items-center'>Delevery Charge <del className='flex items-center text-gray-500'><BiRupee className='text-base' />40</del></p>
                 </div>
                 <p className=' flex justify-between px-4 py-2 font-medium'>Tolal Price <span className='flex items-center'><BiRupee className='text-base' />{TotalPriceWithDiscount(products)}</span></p>

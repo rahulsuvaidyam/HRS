@@ -36,7 +36,7 @@ const Occasion: FC<OccasionProps> = () => {
                 <p className='text-2xl pt-2 pb-3 font-medium truncate'>Celebrate Special Occasions</p>
                 <div className="w-full flex flex-col md:flex-row gap-3">
                     {occasions?.map((e: any) => (
-                        <Link to={`/productlist/${null}/${e._id}`} key={e?._id} className=" w-full md:w-1/2">
+                        <Link to={`/productlist/event/${e._id}`} key={e?._id} className=" w-full md:w-1/2">
                             <div className="w-full cursor-pointer overflow-hidden rounded-t-md">
                                 {e?.name === 'Happy Birthday' ? <img className='rounded-t-md h-full w-full transition-all duration-200 hover:scale-105' src='https://www.fnp.com/assets/images/custom/cakes_23/special_occasion/Birthday_web.jpg' alt="" />
                                     : <img className='rounded-t-md h-full w-full transition-all duration-200 hover:scale-105' src='https://www.fnp.com/assets/images/custom/cakes_23/special_occasion/Anniversary_web.jpg' alt="" />

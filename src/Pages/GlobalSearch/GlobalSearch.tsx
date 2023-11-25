@@ -54,7 +54,7 @@ const GlobalSearch: FC<GlobalSearchProps> = () => {
         <>
             <div className="w-3/5 md:w-3/6 relative">
                 <div onClick={() => setSearchPopup(true)} className='outline-none w-full cursor-text bg-white text-sm font-medium text-gray-700 py-1.5 rounded-md md:py-1.5 pl-7 pr-2' >Search for products</div>
-                <BiSearch className='text-gray-700 absolute left-2 top-2' />
+                <BiSearch className='text-tatary absolute left-2 top-2' />
 
                 <Transition.Root show={searchPopup} as={Fragment}>
                     <Dialog as="div" className="relative z-50" initialFocus={cancelButtonRef} onClose={setSearchPopup}>
@@ -103,7 +103,7 @@ const GlobalSearch: FC<GlobalSearchProps> = () => {
                                                             <img className='h-10 rounded-sm' src={process.env.REACT_APP_API_URL + '/' + e?.images[0]?.url} alt="" />
                                                             <div className="">
                                                                 <p className='text-sm'>{e?.name}</p>
-                                                                <p className='text-[10px] font-medium text-blue-500'>in {e?.category?.name}</p>
+                                                                <p className='text-[10px] font-medium text-primary'>in {e?.category?.name}</p>
                                                             </div>
                                                         </div>
                                                         <GoArrowUpRight />

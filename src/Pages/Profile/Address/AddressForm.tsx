@@ -128,8 +128,9 @@ const AddressForm: FC<AddressAddressFormProps> = ({ editData, setAddAddress }) =
                     <Text name='house_name' label='Enter House Name' />
                     <Text name='road_name' label='Enter Road Name' />
                     <Text name='land_mark' label='Enter Landmark' />
-                    <div className="pt-4 ">
-                        <button type='submit' className='border w-full md:w-auto font-medium px-10 text-sm py-1.5 bg-blue-500 text-white'>{editData?.name ? 'Update Address' : 'Create Address'}</button>
+                    <div className="pt-4 flex gap-3">
+                        <button type='submit' className='border w-full md:w-auto font-medium px-10 text-sm py-1.5 bg-primary text-white'>{editData?.name ? 'Update Address' : 'Create Address'}</button>
+                        <button onClick={()=>setAddAddress(false)} type='button' className='border w-full md:w-auto font-medium px-10 text-sm py-1.5 bg-secondary text-white'>Cancel</button>
                     </div>
                 </Form>
             </Formik>

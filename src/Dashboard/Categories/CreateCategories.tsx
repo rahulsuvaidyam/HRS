@@ -78,7 +78,7 @@ const CreateCategories: FC<CreateCategoriesProps> = () => {
                 <Form className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <Text name='name' label='Enter Name'/>
                     <Image onImageUpload={uploadImage}/>
-                    <button type='submit' disabled={image?false:true} className='border w-full font-medium px-4 py-1 mt-2 bg-blue-500 text-white'>{categoryEdit?.name?'Update':'Save'}</button>
+                    <button type='submit' disabled={image?false:true} className='border w-full font-medium px-4 py-1 mt-2 bg-primary text-white'>{categoryEdit?.name?'Update':'Save'}</button>
                 </Form>
             </Formik>
         </>

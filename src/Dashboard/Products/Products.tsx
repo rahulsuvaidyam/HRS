@@ -88,14 +88,14 @@ const Product: FC<ProductProps> = () => {
                                             <span className='flex text-sm items-center'><BiRupee className='text-sm' />{e?.discounts ? Math.ceil((100 - e?.discounts) / 100 * e?.price) : e?.price}</span>
                                             {e?.discounts ? <>
                                                 <del className='flex items-center text-xs text-gray-700'><BiRupee className='text-xs' />{e?.price}</del>
-                                                <span className='text-blue-500 text-xs '>{e?.discounts}% off</span></>
+                                                <span className='text-primary text-xs '>{e?.discounts}% off</span></>
                                                 : ''}
                                         </div>
-                                        <div className="bg-blue-500 rounded-md px-1 text-[10px] text-white flex items-center">4.3 <BsStarHalf className='text-[8px]' /></div>
+                                        <div className="bg-primary rounded-sm px-1 text-[10px] text-white flex items-center">4.3 <BsStarHalf className='text-[8px]' /></div>
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <span className='text-xs font-medium'>{e?.category?.name}</span>
-                                        <div className="text-xs text-gray-500">456 Reviews</div>
+                                        <div className="text-xs text-tatary">456 Reviews</div>
                                     </div>
                                 </div>
                                 <div className=" absolute top-2 right-2 hidden group-hover:block">

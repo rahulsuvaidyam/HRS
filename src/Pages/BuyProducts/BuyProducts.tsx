@@ -97,7 +97,7 @@ const BuyProducts: FC<BuyProductsProps> = () => {
           {/* step two */}
           {currentStep >= 2 && <div className="w-full fixed bottom-0 left-0 px-2  md:px-20 bg-slate-50 h-14 flex items-center justify-between">
             <p className='flex items-center '>Tolal Price  <BiRupee />{TotalPriceWithDiscount(totalPrice)}</p>
-            <button onClick={() => Order()} className='bg-blue-500 rounded-md md:rounded-none py-2 text-white px-8 md:px-16'>Continue</button>
+            <button onClick={() => Order()} className='bg-primary rounded-md md:rounded-none py-2 text-white px-8 md:px-16'>Continue</button>
           </div>}</div>
       </div>
       {/* change address */}

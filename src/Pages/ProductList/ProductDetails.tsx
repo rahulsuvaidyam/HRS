@@ -88,8 +88,8 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                                         <img className='w-full' src={process.env.REACT_APP_API_URL + '/' + (imageSelected?.url === undefined ? products?.image?.url : imageSelected?.url)} alt="" />
                                         <div className="hidden md:block">
                                             <div className="w-full items-center flex gap-4 left-0 px-2 md:px-0 ">
-                                                <button onClick={() => CartItem(products._id)} className='uppercase w-full font-medium h-[45px] text-white rounded-md bg-primary'>Add to Cart</button>
-                                                <button onClick={() => wishlist(products._id)} className='uppercase w-full font-medium h-[45px] text-white rounded-md bg-secondary'>Wish list</button>
+                                                <button onClick={() => CartItem(products._id)} className='uppercase w-full font-medium h-[45px] text-white bg-primary'>Add to Cart</button>
+                                                <button onClick={() => wishlist(products._id)} className='uppercase w-full font-medium h-[45px] text-white bg-secondary'>Wish list</button>
                                             </div>
                                         </div>
                                     </div>
@@ -173,8 +173,8 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                             </div>
                             <div className="block md:hidden">
                                 <div className="w-full bg-white fixed md:sticky bottom-0 h-14 items-center flex gap-4 left-0 px-2 md:px-0 z-10">
-                                    <button onClick={() => CartItem(products._id)} className='uppercase w-full font-medium h-10 text-white rounded-md bg-primary'>Add to Cart</button>
-                                    <button onClick={() => wishlist(products._id)} className='uppercase w-full font-medium h-10 text-white rounded-md bg-secondary'>Wish list</button>
+                                    <button onClick={() => CartItem(products._id)} className='uppercase w-full font-medium h-10 text-white bg-primary'>Add to Cart</button>
+                                    <button onClick={() => wishlist(products._id)} className='uppercase w-full font-medium h-10 text-white bg-secondary'>Wish list</button>
                                 </div>
                             </div>
                         </div>

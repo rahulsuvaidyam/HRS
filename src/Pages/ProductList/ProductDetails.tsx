@@ -71,13 +71,13 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
     }
     return (
         <>
-            <div className="pt-12 md:pt-14 pb-3 w-full h-full max-w-[1060px] mx-auto relative">
+            <div className="pt-12 md:pt-14 w-full h-full max-w-[1060px] mx-auto relative">
                 {loading ? <Spinner loading={loading} /> :
-                    <div className="flex flex-col md:flex-row pb-2 h-full ">
+                    <div className="flex flex-col md:flex-row h-full ">
                         <div className="w-full md:w-1/2 md:h-full md:p-2">
                             <div className="hidden md:block ">
                                 <div className="w-full h-auto md:h-full flex gap-2">
-                                    <div className="w-20 h-full border-r flex flex-col gap-1">
+                                    <div className="w-20 h-full flex flex-col gap-1">
                                         {products.images?.map((e: any) => (
                                             <div key={e._id} onClick={() => setimageSelected(e)} className={`${imageSelected?._id === e?._id ? 'border-2 border-gray-950' : ''} px-0.5 md:px-0 overflow-hidden cursor-pointer`}>
                                                 <img className='h-full md:h-auto w-auto md:w-full' src={process.env.REACT_APP_API_URL + '/' + e?.url} alt="" />
@@ -112,7 +112,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                             </div>
 
                         </div>
-                        <div className="w-full md:w-1/2 h-full  p-2 pb-14 md:pb-0 flex flex-col gap-2 relative">
+                        <div className="w-full md:w-1/2 h-full md:overflow-y-scroll md:scrollbar-none  p-2 pb-14 md:pb-0 flex flex-col gap-2 relative">
                             <p className='text-lg '>{products.name}</p>
                             <div className="flex items-center gap-2">
                                 <div className="bg-primary px-1 font-medium rounded-sm text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
@@ -161,12 +161,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                             </div>
                             <div className="w-full">
                                 <p className='font-medium to-gray-700'>Product Deatils</p>
-                                <ul className=' flex flex-col gap-2 list-disc px-4'>
-                                    <li className='text-sm '>4 GB RAM | 128 GB ROM | Expandable Upto 1 TB</li>
-                                    <li className='text-sm '>4 GB RAM | 128 GB ROM | Expandable Upto 1 TB</li>
-                                    <li className='text-sm '>4 GB RAM | 128 GB ROM | Expandable Upto 1 TB</li>
-                                    <li className='text-sm '>4 GB RAM | 128 GB ROM | Expandable Upto 1 TB</li>
-                                </ul>
+                                 <div className='text-sm list-disc pl-4' dangerouslySetInnerHTML={{ __html: products.key_features }}/>
                             </div>
                             <div className="w-full ">
                                 <p className=' font-medium text-tatary text-sm'>Seller : {products?.created_by?.name}</p>

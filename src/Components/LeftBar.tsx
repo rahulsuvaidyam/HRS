@@ -14,7 +14,7 @@ const LeftBar: FC<LeftBarProps> = () => {
     const {pathname} = useLocation()
     return (
         <>
-              <aside className={`${openSideBar?'w-16 md:w-48 -translate-x-full md:translate-x-0':'w-16  sm:translate-x-0'} duration-500 fixed pt-12 md:pt-14 top-0 left-0 z-40  h-screen transition-all`} aria-label="Sidebar">
+              <aside className={`${openSideBar?'w-16 md:w-48 -translate-x-full md:translate-x-0':'w-16  sm:translate-x-0'} duration-500 fixed pt-12 md:pt-14 top-0 left-0 z-30  h-screen transition-all`} aria-label="Sidebar">
                 <BsArrowBarLeft className='absolute -right-3 md:-right-2 top-20 text-xl cursor-pointer text-gray-600 hover:to-gray-900'
                  onClick={()=>setopenSideBar(!openSideBar)}/>
                     <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">

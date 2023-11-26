@@ -9,14 +9,16 @@ import Select from '../../Components/FormControl/Select';
 import TextArea from '../../Components/FormControl/TextArea';
 import Image from '../../Components/FormControl/Image';
 import { IoIosClose } from 'react-icons/io' 
+import TextEditor from '../../Components/FormControl/TextEditor';
 
 interface CreateProductsProps { }
 interface FormValues {
     name: string;
     price: number;
     category: string;
-    description: string;
     discounts: number; 
+    description: string;
+    key_features: string;
 }
 
 const CreateProducts: FC<CreateProductsProps> = () => {
@@ -32,6 +34,7 @@ const CreateProducts: FC<CreateProductsProps> = () => {
         category: productEdit?.category?._id || "",
         description: productEdit?.description || "",
         discounts: productEdit?.discounts || 0,
+        key_features: productEdit?.key_features || 0,
     };
 //    console.log(category)
     useEffect(() => {
@@ -154,6 +157,7 @@ const CreateProducts: FC<CreateProductsProps> = () => {
                     ))}
                 </div>}
                     <Image onImageUpload={uploadImage}/>
+                    <TextEditor label='' required={false} name='key_features' />
                     <button type='submit' disabled={image ? false : true} className='border w-full font-medium px-4 py-1 mt-2 bg-primary text-white'>{productEdit?.name?'Update':'Save'}</button>
                 </Form>
             </Formik>

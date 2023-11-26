@@ -91,10 +91,10 @@ const Carousels: FC<CarouselsProps> = () => {
                                 </div>
                             ))}
                         </div>
+                    </div>:<DataNotFound/>}
                         <div onClick={() => setOpenPopUP(true)} className='w-14 h-14 flex items-center cursor-pointer justify-center rounded-full border-2 fixed bottom-6 right-6'>
                             <BiPlus className='text-3xl text-gray-600' />
                         </div>
-                    </div>:<DataNotFound/>}
                     <PopUp title='Create Carousel' />
                 </>}
         </>

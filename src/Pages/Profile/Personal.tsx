@@ -53,7 +53,7 @@ const Personal: FC<PersonalProps> = () => {
                 <Form className="bg-white  pb-4 pt-5 sm:pb-4">
                     <Text disabled={edit} name='name' label='Enter Name' />
                     <Text disabled={edit} name='email' label='Enter Email' />
-                    <Number disabled={edit} name='phone' label='Enter Phone Number' />
+                    <Number disabled={edit} name='phone' label='Enter Phone Number' length='10'/>
                     <Gender disabled={edit} />
                     <div className="pt-4 ">
                         {edit ? <span onClick={() => setEdit(false)} className='border block md:inline-block text-center cursor-pointer font-medium px-6 py-2 bg-primary text-sm text-white'>Edit Profile</span> :

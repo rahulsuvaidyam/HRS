@@ -53,7 +53,7 @@ const GlobalSearch: FC<GlobalSearchProps> = () => {
     return (
         <>
             <div className="w-3/5 md:w-3/6 relative">
-                <div onClick={() => setSearchPopup(true)} className='outline-none w-full cursor-text bg-white text-sm font-medium text-gray-700 py-1.5 rounded-md md:py-1.5 pl-7 pr-2' >Search for products</div>
+                <div onClick={() => setSearchPopup(true)} className='outline-none w-full cursor-text bg-white text-sm font-medium text-gray-700 py-1.5 rounded-sm md:py-1.5 pl-7 pr-2' >Search for products</div>
                 <BiSearch className='text-tatary absolute left-2 top-2' />
 
                 <Transition.Root show={searchPopup} as={Fragment}>

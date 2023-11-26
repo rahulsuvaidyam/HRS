@@ -135,7 +135,7 @@ const Cart: FC<CartProps> = () => {
             </div>
            {product_id.length > 0 &&  <div className="fixed w-full left-0 bg-white h-16 z-50 bottom-0 px-2 md:px-16 flex justify-between items-center">
               <p className='text-xl text-gray-700 flex items-center'>Total Price : <span className='text-lg flex items-center ' ><BiRupee /> {TotalPriceWithDiscount(products,product_id)}</span></p>
-              <Link onClick={() => setIsRender(!isRender)} to='/buy' className='text-white bg-primary px-4 py-2 md:px-10'>PLACE ORDER</Link>
+              <Link onClick={() => setIsRender(!isRender)} to='/buy' className='text-white bg-primary py-2 px-10'>PLACE ORDER</Link>
             </div>}
           </div> : <CartAlert />}
     </>

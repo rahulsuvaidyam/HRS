@@ -79,13 +79,13 @@ const PopUp: FC<PopUpProps> = ({ title }) => {
                         </button>
                       </div>
                     </Transition.Child>
-                    <div className="flex h-full flex-col overflow-y-scroll bg-white py-4 shadow-xl">
-                      <div className="px-4 sm:px-6">
-                        <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
+                    <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                      <div className="px-4 sticky top-0 z-10 bg-white sm:px-6">
+                        <Dialog.Title className="text-base flex items-center h-10 font-semibold leading-6 text-gray-900">
                           {title}
                         </Dialog.Title>
                       </div>
-                      <div className="relative mt-4 flex-1">
+                      <div className="relative flex-1">
                         {pathname === "/dashboard/category" && <CreateCategories />}
                         {pathname === "/dashboard/product" && <CreateProducts />}
                         {pathname === "/dashboard/event" && <CreateEvent />}

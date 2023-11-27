@@ -18,7 +18,7 @@ const ProductGroupByEvent: FC<ProductGroupByEventProps> = () => {
                 const response = await Http({
                     url: '/GetShowGrop',
                     method: 'get',
-                },true);
+                }, true);
                 setProduct(response?.data?.data)
                 setTimeout(() => {
                     //   setLoading(false)
@@ -27,7 +27,7 @@ const ProductGroupByEvent: FC<ProductGroupByEventProps> = () => {
             } catch (error: any) {
                 toast.error(error.response?.data?.message)
             }
-            
+
         }
         getProducts();
         // eslint-disable-next-line
@@ -35,15 +35,18 @@ const ProductGroupByEvent: FC<ProductGroupByEventProps> = () => {
     return (
         <>
             <div className="w-full md:px-8 flex flex-col gap-5">
-                <Occasion/>
+                <Occasion />
                 {product?.map((e: any) => (
                     <div key={e?.event?._id} className="bg-white md:rounded-sm shadow-md p-3">
-                        <p className='text-2xl font-medium '>{e?.event?.name} <span className='text-lg'>({e?.products.length})</span></p>
+                        <div className="flex  items-center justify-between">
+                            <p className='text-2xl font-medium '>{e?.event?.name} <span className='text-lg'>({e?.products.length})</span></p>
+                            <Link to={`/productlist/event/${e?.event?._id}`} className='px-4 py-1 cursor-pointer text-sm font-medium bg-primary text-white'>View All</Link>
+                        </div>
                         <div className="pt-3 overflow-x-auto scrollbar-thin flex gap-2 md:gap-3">
                             {e?.products?.map((e: any) => (
-                                <Link to={'/productdetails/'+e._id} key={e._id} target="_blank" className="border w-1/5 min-w-[200px]  md:min-w-[220px] hover:shadow-xl cursor-pointer rounded-sm bg-white">
+                                <Link to={'/productdetails/' + e._id} key={e._id} target="_blank" className="border w-1/5 min-w-[200px]  md:min-w-[220px] hover:shadow-xl cursor-pointer rounded-sm bg-white">
                                     <div className="w-full overflow-hidden rounded-t-sm">
-                                    <img className='rounded-t-sm max-h-44 w-full transition-all duration-200 hover:scale-105' src={process.env.REACT_APP_API_URL + '/' + e?.images[0]?.url} alt="" />
+                                        <img className='rounded-t-sm max-h-44 w-full transition-all duration-200 hover:scale-105' src={process.env.REACT_APP_API_URL + '/' + e?.images[0]?.url} alt="" />
                                     </div>
                                     <div className="w-full p-1 flex flex-col gap-2">
                                         <p className="text-sm truncate">{e?.name}</p>

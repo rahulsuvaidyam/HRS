@@ -30,7 +30,7 @@ const ShowCarousel: FC<ShowCarouselProps> = () => {
     }, [isRender])
     return (
         <>
-            <div className="w-full h-32 md:h-56">
+            <div className="w-full h-32 md:h-52">
                 <Carousel
                     showArrows={false}
                     infiniteLoop={true}
@@ -39,7 +39,7 @@ const ShowCarousel: FC<ShowCarouselProps> = () => {
                     showThumbs={false} >
                     {carousel?.map((el: any) => (
                         <div key={el?._id}>
-                            <img className='h-32 md:h-56' src={process.env.REACT_APP_API_URL + '/' + el?.url} alt={el?.mimetype} />
+                            <img className='h-32 md:h-52' src={process.env.REACT_APP_API_URL + '/' + el?.url} alt={el?.mimetype} />
                         </div>
                     ))}
                 </Carousel>

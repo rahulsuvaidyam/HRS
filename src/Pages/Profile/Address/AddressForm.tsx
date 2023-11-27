@@ -80,6 +80,7 @@ const AddressForm: FC<AddressAddressFormProps> = ({ editData, setAddAddress }) =
         }
     }
     const validationSchema = Yup.object().shape({
+        name:Yup.string().required('name is required'),
         pin_code:Yup.string().matches(/^\d{6}$/, 'Must be a 6-digit code')
     })
     useEffect(() => {

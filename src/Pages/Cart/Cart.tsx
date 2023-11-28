@@ -86,7 +86,7 @@ const Cart: FC<CartProps> = () => {
                 <div key={e?._id} className="lg:h-36 p-3 text-gray-800 relative border-b flex flex-col lg:flex-row justify-between">
                   <input type="checkbox" className='absolute top-4 right-4' onChange={()=>SelectedProduct(e._id)} checked={product_id.find((_id:string)=>(_id===e._id))}/>
                   <Link to={'/productdetails/' + e?.product?._id} className="flex gap-2 lg:gap-4 group">
-                    <img className='h-20 lg:h-full rounded-md' src={process.env.REACT_APP_API_URL + '/' + e?.product?.images[0]?.url} alt="" />
+                    <img className='h-20 lg:h-full rounded-md' src={e?.product?.images[0]?.url} alt="" />
                     <div className='flex flex-col gap-1 justify-between'>
                       <div className='flex flex-col gap-2'>
                         <p className='text-sm md:text-lg truncate group-hover:underline'>{e?.product?.name}</p>

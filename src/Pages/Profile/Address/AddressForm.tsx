@@ -1,4 +1,5 @@
 import { Form, Formik } from 'formik';
+import * as Yup from 'yup';
 import { useState, type FC, useContext, useEffect } from 'react';
 import Text from '../../../Components/FormControl/Text';
 import Number from '../../../Components/FormControl/Number';
@@ -78,7 +79,10 @@ const AddressForm: FC<AddressAddressFormProps> = ({ editData, setAddAddress }) =
             }
         }
     }
-
+    const validationSchema = Yup.object().shape({
+        name:Yup.string().required('name is required'),
+        pin_code:Yup.string().matches(/^\d{6}$/, 'Must be a 6-digit code')
+    })
     useEffect(() => {
         const getData = async () => {
             try {
@@ -111,13 +115,13 @@ const AddressForm: FC<AddressAddressFormProps> = ({ editData, setAddAddress }) =
         <>
             <Formik
                 initialValues={initialValues}
-                //   validate={validate}
+                validationSchema={validationSchema}
                 onSubmit={onsubmit}>
                 <Form className="bg-white  pb-4 pt-5 sm:pb-4">
                     <Text name='name' label='Enter Name' />
                     <div className="grid grid-cols-2 gap-x-4">
-                        <Number name='phone' label='Enter Phone Number' />
-                        <Number name='pin_code' label='Enter Pin Code' />
+                        <Number name='phone' label='Enter Phone Number' length='10' />
+                        <Number name='pin_code' label='Enter Pin Code' length='6'/>
                         <Select label='State' name='state' array={state ?? []} />
                         <Select label='District' name='district' array={district ?? []} />
                     </div>
@@ -130,7 +134,7 @@ const AddressForm: FC<AddressAddressFormProps> = ({ editData, setAddAddress }) =
                     <Text name='land_mark' label='Enter Landmark' />
                     <div className="pt-4 flex gap-3">
                         <button type='submit' className='border w-full md:w-auto font-medium px-10 text-sm py-1.5 bg-primary text-white'>{editData?.name ? 'Update Address' : 'Create Address'}</button>
-                        <button onClick={()=>setAddAddress(false)} type='button' className='border w-full md:w-auto font-medium px-10 text-sm py-1.5 bg-secondary text-white'>Cancel</button>
+                        <button onClick={() => setAddAddress(false)} type='button' className='border w-full md:w-auto font-medium px-10 text-sm py-1.5 bg-secondary text-white'>Cancel</button>
                     </div>
                 </Form>
             </Formik>

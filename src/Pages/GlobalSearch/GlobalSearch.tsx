@@ -100,7 +100,7 @@ const GlobalSearch: FC<GlobalSearchProps> = () => {
                                                 searchResults?.map((e: any) => (
                                                     <Link key={e?._id} onClick={() => setSearchPopup(false)} to={'/productdetails/' + e._id} className="flex px-2 items-center justify-between hover:bg-gray-200">
                                                         <div className="flex items-center gap-2 cursor-pointer">
-                                                            <img className='h-10 rounded-sm' src={process.env.REACT_APP_API_URL + '/' + e?.images[0]?.url} alt="" />
+                                                            <img className='h-10 rounded-sm' src={e?.images[0]?.url} alt="" />
                                                             <div className="">
                                                                 <p className='text-sm'>{e?.name}</p>
                                                                 <p className='text-[10px] font-medium text-primary'>in {e?.category?.name}</p>

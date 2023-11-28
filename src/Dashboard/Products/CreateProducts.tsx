@@ -140,8 +140,8 @@ const CreateProducts: FC<CreateProductsProps> = () => {
                 onSubmit={onsubmit}>
                 <Form className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     <Text name='name' label='Enter Name' />
-                    <Number name='price' label='Enter Price' />
-                    <Number name='discounts' label='Enter Discounts' />
+                    <Number name='price' label='Enter Price' length='10'/>
+                    <Number name='discounts' label='Enter Discounts' length='3'/>
                     <Select name='category' label='Category' array={category ?? []} />
                     <Select name='event' label='Event' array={event ?? []} />
                     <TextArea name='description' label='Enter Description' />
@@ -150,13 +150,13 @@ const CreateProducts: FC<CreateProductsProps> = () => {
                     {images?.map((e:any)=>(
                         <div key={e?._id} className="relative">
                         <div className="truncate w-8 h-8 border rounded-md ">
-                             <img className='rounded-md w-full h-full' src={process.env.REACT_APP_API_URL+'/'+e?.url} alt="" />
+                             <img className='rounded-md w-full h-full' src={e?.url} alt="" />
                         </div>
                              <IoIosClose onClick={()=>removeItem(e)} className='cursor-pointer text-xl absolute -top-2 -right-2'/>
                         </div>
                     ))}
                 </div>}
-                    <Image onImageUpload={uploadImage}/>
+                    <Image onImageUpload={uploadImage} message='Multi'/>
                     <TextEditor label='' required={false} name='key_features' />
                     <button type='submit' disabled={image ? false : true} className='border w-full font-medium px-4 py-1 mt-2 bg-primary text-white'>{productEdit?.name?'Update':'Save'}</button>
                 </Form>

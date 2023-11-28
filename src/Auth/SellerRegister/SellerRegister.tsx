@@ -71,8 +71,8 @@ const SellerRegister: FC<SellerRegisterProps> = () => {
                    <Text name='email' label='Enter Email'/>
                    <Text name='shop_name' label='Enter Shop Name'/>
                    <Text name='address' label='Enter Address'/>
-                   <Number name='pin_code' label='Enter Pin Code'/>
-                   <Number name='phone' label='Enter Phone Number'/>
+                   <Number name='pin_code' label='Enter Pin Code' length='6'/>
+                   <Number name='phone' label='Enter Phone Number' length='10'/>
                    <Password name='password' label='Enter Password'/>
                     <Gender/>
                   </div>

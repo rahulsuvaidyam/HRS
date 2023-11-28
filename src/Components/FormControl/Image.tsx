@@ -5,9 +5,10 @@ import { AiOutlineCloudUpload } from 'react-icons/ai';
 interface ImageProps {
     onImageUpload: (file: File) => void;
     disabled?:boolean
+    message:string
 }
 
-const Image: React.FC<ImageProps> = ({ onImageUpload ,disabled}) => {
+const Image: React.FC<ImageProps> = ({ onImageUpload ,disabled,message}) => {
     const onDrop = useCallback((acceptedFiles: File[]) => {
         const file = acceptedFiles[0];
         onImageUpload(file);
@@ -25,6 +26,7 @@ const Image: React.FC<ImageProps> = ({ onImageUpload ,disabled}) => {
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                     <AiOutlineCloudUpload className='text-gray-600 font-semibold text-xl' />
                     <p className="mb-2 text-sm text-gray-500 flex items-center justify-center"><span className="font-semibold text-center">Click or drag to upload</span></p>
+                    <p className="mb-2 text-sm text-gray-500 flex items-center justify-center"><span className="font-semibold text-center">{message} image upload</span></p>
                 </div>
             </label>
         </div>

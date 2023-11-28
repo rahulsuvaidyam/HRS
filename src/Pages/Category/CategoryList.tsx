@@ -35,9 +35,9 @@ const CategoryList: FC<CategoryListProps> = () => {
                     categoryList?.map((e: any, index: number) => (
                         <Link to={`/productlist/category/${e._id}`} key={index} className="flex flex-col items-center cursor-pointer">
                             <div className="md:w-32 w-16  rounded-full md:rounded-3xl border-2 md:border-0">
-                                <img className='rounded-full md:rounded-3xl' src={process.env.REACT_APP_API_URL + '/' + e?.image?.url} alt="" />
+                                <img className='rounded-full md:rounded-3xl' src={e?.image?.url} alt="" />
                             </div>
-                            <p className='text-sm md:text-lg font-medium'>{e?.name}</p>
+                            <p className='text-sm md:text-lg truncate font-medium'>{e?.name}</p>
                         </Link>
                     ))}
             </div>

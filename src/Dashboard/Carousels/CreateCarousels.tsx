@@ -70,11 +70,11 @@ const CreateCarousels: FC<CreateCarouselsProps> = () => {
                 method: 'post',
                 data: FD
             });
-            setImage([...image,response.data.data._id])
-            setImages([...images,response.data.data])
-            toast.success(response.data?.message)
+            setImage([...image,response?.data?.data?._id])
+            setImages([...images,response?.data?.data])
+            toast.success(response?.data?.message)
         } catch (error: any) {
-            toast.error(error.response.data?.message)
+            toast.error(error?.response?.data?.message)
         }
     }
     // console.log(image)
@@ -110,13 +110,13 @@ const CreateCarousels: FC<CreateCarouselsProps> = () => {
                     {images?.map((e:any)=>(
                         <div key={e?._id} className="relative">
                         <div className="truncate w-20 h-8 border rounded-md ">
-                             <img className='rounded-md w-full h-full' src={process.env.REACT_APP_API_URL+'/'+e?.url} alt="" />
+                             <img className='rounded-md w-full h-full' src={e?.url} alt="" />
                         </div>
                              <IoIosClose onClick={()=>removeItem(e)} className='cursor-pointer text-xl absolute -top-2 -right-2'/>
                         </div>
                     ))}
                 </div>}
-                    <Image onImageUpload={uploadImage}/>
+                    <Image onImageUpload={uploadImage} message='Multi'/>
                     <button type='submit' disabled={image ? false : true} className='border w-full font-medium px-4 py-1 mt-2 bg-primary text-white'>{carouselEdit?.name?'Update':'Save'}</button>
                 </Form>
             </Formik>

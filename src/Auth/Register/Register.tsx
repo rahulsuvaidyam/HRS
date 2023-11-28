@@ -53,7 +53,7 @@ const Register: FC<RegisterProps> = () => {
                     <Form className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                         <Text name='name' label='Enter Name' />
                         <Text name='email' label='Enter Email' />
-                        <Number name='phone' label='Enter Phone Number' />
+                        <Number name='phone' label='Enter Phone Number' length='10'/>
                         <Password name='password' label='Enter Password' />
                         <Gender />
                         <button type='submit' className='border w-full font-medium px-4 py-1 mt-2 bg-primary text-white'>Sign Up</button>

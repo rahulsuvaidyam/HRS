@@ -54,7 +54,7 @@ const Items: FC<ItemsProps> = ({settotalPrice}) => {
               {products?.map((e: any) => (
                 <div key={e?._id} className="lg:h-32 p-3 text-gray-800 relative border-b flex flex-col lg:flex-row justify-between">
                   <div className="flex gap-2 lg:gap-4">
-                    <img className='h-20 lg:h-full rounded-md' src={process.env.REACT_APP_API_URL + '/' + e?.product?.images[0]?.url} alt="" />
+                    <img className='h-20 lg:h-full rounded-md' src={e?.product?.images[0]?.url} alt="" />
                     <div className='flex flex-col justify-between'>
                         <div className='flex flex-col gap-1'>
                           <p className='text-sm md:text-base truncate '>{e?.product?.name}</p>

@@ -80,12 +80,12 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                                     <div className="w-20 h-full flex flex-col gap-1">
                                         {products.images?.map((e: any) => (
                                             <div key={e._id} onClick={() => setimageSelected(e)} className={`${imageSelected?._id === e?._id ? 'border-2 border-gray-950' : ''} px-0.5 md:px-0 overflow-hidden cursor-pointer`}>
-                                                <img className='h-full md:h-auto w-auto md:w-full' src={process.env.REACT_APP_API_URL + '/' + e?.url} alt="" />
+                                                <img className='h-full md:h-auto w-auto md:w-full' src={e?.url} alt="" />
                                             </div>
                                         ))}
                                     </div>
                                     <div className="w-full h-full flex flex-col gap-3">
-                                        <img className='w-full' src={process.env.REACT_APP_API_URL + '/' + (imageSelected?.url === undefined ? products?.image?.url : imageSelected?.url)} alt="" />
+                                        <img className='w-full' src={(imageSelected?.url === undefined ? products?.image?.url : imageSelected?.url)} alt="" />
                                         <div className="hidden md:block">
                                             <div className="w-full items-center flex gap-4 left-0 px-2 md:px-0 ">
                                                 <button onClick={() => CartItem(products._id)} className='uppercase w-full font-medium h-[45px] text-white bg-primary'>Add to Cart</button>
@@ -105,7 +105,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                                 >
                                     {products?.images?.map((e: any) => (
                                         <div key={e?._id}>
-                                            <img className='h-56' src={process.env.REACT_APP_API_URL + '/' + e?.url} alt='aa' />
+                                            <img className='h-56' src={e?.url} alt='aa' />
                                         </div>
                                     ))}
                                 </Carousel>

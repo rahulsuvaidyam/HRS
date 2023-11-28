@@ -150,7 +150,7 @@ const CreateProducts: FC<CreateProductsProps> = () => {
                     {images?.map((e:any)=>(
                         <div key={e?._id} className="relative">
                         <div className="truncate w-8 h-8 border rounded-md ">
-                             <img className='rounded-md w-full h-full' src={process.env.REACT_APP_API_URL+'/'+e?.url} alt="" />
+                             <img className='rounded-md w-full h-full' src={e?.url} alt="" />
                         </div>
                              <IoIosClose onClick={()=>removeItem(e)} className='cursor-pointer text-xl absolute -top-2 -right-2'/>
                         </div>

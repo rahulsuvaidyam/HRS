@@ -77,7 +77,7 @@ const Categories: FC<CategoriesProps> = () => {
                                 {category?.map((e: any, index: number) => (
                                     <div key={e?._id} className="rounded-3xl">
                                         <div className=" relative group">
-                                            <img className='rounded-3xl hover:shadow-xl h-full w-full' src={process.env.REACT_APP_API_URL + '/' + e?.image?.url} alt="" />
+                                            <img className='rounded-3xl hover:shadow-xl h-full w-full' src={e?.image?.url} alt="" />
                                             <div className=" absolute top-10 left-12 block group-hover:hidden">
                                                 <p className="bg-opacity-75 bg-gray-500 rounded-full w-4 h-4 text-xs font-medium flex items-center justify-center text-white"> {index + 1}</p>
                                             </div>

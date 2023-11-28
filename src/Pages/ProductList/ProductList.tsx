@@ -58,7 +58,7 @@ const ProductList: FC<ProductListProps> = () => {
             <div className="grid pt-3 grid-cols-2 gap-x-2 md:gap-x-6 gap-y-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
               {product?.map((e: any) => (
                 <Link to={'/productdetails/' + e._id} key={e._id} target="_blank" className="border hover:shadow-xl cursor-pointer rounded-sm">
-                  <img className='rounded-t-sm p-0.5 max-h-44 w-full' src={process.env.REACT_APP_API_URL + '/' + e?.images[0]?.url} alt="" />
+                  <img className='rounded-t-sm p-0.5 max-h-44 w-full' src={e?.images[0]?.url} alt="" />
                   <div className="w-full p-1 flex flex-col gap-2">
                     <p className="text-sm truncate">{e?.name}</p>
                     <div className="flex justify-between items-center">

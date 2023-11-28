@@ -18,38 +18,38 @@ const LeftBar: FC<LeftBarProps> = () => {
                 <BsArrowBarLeft className='absolute -right-3 md:-right-2 top-20 text-xl cursor-pointer shadow-md bg-gray-200 text-gray-600 hover:to-gray-900'
                  onClick={()=>setopenSideBar(!openSideBar)}/>
                     <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-                        <ul className="space-y-2 font-medium">
-                            <li>
+                        <div className="space-y-2 font-medium">
+                            <div>
                                 <Link to='/dashboard' className={`${pathname === '/dashboard'?'bg-gray-100':''} flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 group`}>
                                    <MdDashboardCustomize  className="w-5 h-5 text-gray-500 transition duration-75 "/>
                                     <span className={`${openSideBar?'block':'hidden'} ml-3 truncate transition-all duration-500`}>Dashboard</span>
                                 </Link>
-                            </li> 
-                            <li>
+                            </div> 
+                            <div>
                                 <Link to='event' className={`${pathname === '/dashboard/event'?'bg-gray-100':''} flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 group`}>
                                    <CgEventbrite className="w-5 h-5 text-gray-500 transition duration-75 "/>
                                     <span className={`${openSideBar?'block':'hidden'} ml-3 truncate transition-all duration-500`}>Event</span>
                                 </Link>
-                            </li> 
-                            <li>
+                            </div> 
+                            <div>
                                 <Link to='category' className={`${pathname === '/dashboard/category'?'bg-gray-100':''} flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 group`}>
                                    <MdCategory className="w-5 h-5 text-gray-500 transition duration-75 "/>
                                     <span className={`${openSideBar?'block':'hidden'} ml-3 truncate transition-all duration-500`}>Category</span>
                                 </Link>
-                            </li> 
-                            <li>
+                            </div> 
+                            <div>
                                 <Link to='product' className={`${pathname === '/dashboard/product'?'bg-gray-100':''} flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 group`}>
                                    <TbBrandProducthunt className="w-5 h-5 text-gray-500 transition duration-75 "/>
                                     <span className={`${openSideBar?'block':'hidden'} ml-3 truncate transition-all duration-500`}>Products</span>
                                 </Link>
-                            </li> 
-                            <li>
+                            </div> 
+                            <div>
                                 <Link to='carousel' className={`${pathname === '/dashboard/carousel'?'bg-gray-100':''} flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-200 group`}>
                                    <BiCarousel className="w-5 h-5 text-gray-500 transition duration-75 "/>
                                     <span className={`${openSideBar?'block':'hidden'} ml-3 truncate transition-all duration-500`}>Carousel</span>
                                 </Link>
-                            </li> 
-                        </ul>
+                            </div> 
+                        </div>
                     </div>
                 </aside> 
         </>

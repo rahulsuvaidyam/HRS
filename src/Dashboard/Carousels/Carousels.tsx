@@ -20,7 +20,7 @@ const Carousels: FC<CarouselsProps> = () => {
 
     useEffect(() => {
         const getCategory = async () => {
-            setLoading(false)
+            setLoading(true)
             try {
                 const response = await Http({
                     url: '/carousel',
@@ -76,7 +76,7 @@ const Carousels: FC<CarouselsProps> = () => {
                                     >
                                         {e?.images?.map((e: any) => (
                                             <div key={e?._id}>
-                                                <img className='h-24' src={process.env.REACT_APP_API_URL + '/' + e?.url} alt='aa' />
+                                                <img className='h-24' src={e?.url} alt='aa' />
                                             </div>
                                         ))}
 

@@ -96,7 +96,7 @@ const CreateCategories: FC<CreateCategoriesProps> = () => {
                     {images?._id &&<div className="flex items-center gap-2 border px-2 py-1 rounded-md mb-2">
                         <div key={images?._id} className="relative">
                             <div className="truncate w-20 h-8 border rounded-md ">
-                                <img className='rounded-md w-full h-full' src={process.env.REACT_APP_API_URL + '/' + images?.url} alt="" />
+                                <img className='rounded-md w-full h-full' src={images?.url} alt="" />
                             </div>
                             <IoIosClose onClick={() => removeItem(images)} className='cursor-pointer text-xl absolute -top-2 -right-2' />
                         </div>

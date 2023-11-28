@@ -76,7 +76,7 @@ const Product: FC<ProductProps> = () => {
                                         >
                                             {e?.images?.map((e: any) => (
                                                 <div key={e?._id}>
-                                                    <img className='h-24' src={process.env.REACT_APP_API_URL + '/' + e?.url} alt='aa' />
+                                                    <img className='h-24' src={e?.url} alt='aa' />
                                                 </div>
                                             ))}
 

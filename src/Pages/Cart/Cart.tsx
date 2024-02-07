@@ -16,7 +16,7 @@ const Cart: FC<CartProps> = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [product_id, setProduct_id] = useState<any>([])
   sessionStorage.setItem('product_id',JSON.stringify(product_id))
-  const { setIsRender, isRender } = useContext(DataContext)
+  const { setIsRender, isRender,setLogInPage } = useContext(DataContext)
   useEffect(() => {
     const GetCart = async () => {
       try {
@@ -30,9 +30,11 @@ const Cart: FC<CartProps> = () => {
         setLoading(false)
       } catch (error: any) {
         toast.error(error.response?.data?.message)
+        setLogInPage(true)
       }
     }
     GetCart()
+    // eslint-disable-next-line
   }, [isRender])
   const DeleteItem = async (e: any) => {
     try {

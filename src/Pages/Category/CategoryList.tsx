@@ -32,12 +32,12 @@ const CategoryList: FC<CategoryListProps> = () => {
         <>
             <div className="px-2 md:px-8 py-2 flex items-center gap-3 md:gap-5 overflow-x-scroll scrollbar-thin">
                 {loader ? <CategoryLoader /> :
-                    categoryList?.map((e: any, index: number) => (
+                    categoryList?.filter((el:any)=>el.parent==null).map((e: any, index: number) => (
                         <Link to={`/productlist/category/${e._id}`} key={index} className="flex flex-col items-center cursor-pointer">
                             <div className="md:w-32 w-16  rounded-full md:rounded-3xl border-2 md:border-0">
                                 <img className='rounded-full md:rounded-3xl' src={e?.image?.url} alt="" />
                             </div>
-                            <p className='text-sm md:text-lg truncate font-medium'>{e?.name}</p>
+                            <p className='text-xs md:text-lg truncate font-medium'>{e?.name}</p>
                         </Link>
                     ))}
             </div>

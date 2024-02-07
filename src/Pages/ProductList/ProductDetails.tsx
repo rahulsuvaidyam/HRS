@@ -14,6 +14,7 @@ interface ProductDetailsProps { }
 const ProductDetails: FC<ProductDetailsProps> = () => {
 
     const [products, setProduct] = useState<any>({})
+    // eslint-disable-next-line
     const [weight, setWeight] = useState<any>(1)
     const [imageSelected, setimageSelected] = useState<any>({})
     let [loading, setLoading] = useState<boolean>(true);
@@ -73,7 +74,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
         <>
             <div className="pt-12 md:pt-14 w-full h-full max-w-[1060px] mx-auto relative">
                 {loading ? <Spinner loading={loading} /> :
-                    <div className="flex flex-col md:flex-row h-full ">
+                    <div className="flex flex-col gap-x-5 md:flex-row h-full ">
                         <div className="w-full md:w-1/2 md:h-full md:p-2">
                             <div className="hidden md:block ">
                                 <div className="w-full h-auto md:h-full flex gap-2">
@@ -89,7 +90,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                                         <div className="hidden md:block">
                                             <div className="w-full items-center flex gap-4 left-0 px-2 md:px-0 ">
                                                 <button onClick={() => CartItem(products._id)} className='uppercase w-full font-medium h-[45px] text-white bg-primary'>Add to Cart</button>
-                                                <button onClick={() => wishlist(products._id)} className='uppercase w-full font-medium h-[45px] text-white bg-secondary'>Wish list</button>
+                                                <button onClick={() => wishlist(products._id)} className='uppercase w-full font-medium h-[45px] text-white bg-secondary'>Buy Now</button>
                                             </div>
                                         </div>
                                     </div>
@@ -113,7 +114,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
 
                         </div>
                         <div className="w-full md:w-1/2 h-full md:overflow-y-scroll md:scrollbar-none  p-2 pb-14 md:pb-0 flex flex-col gap-2 relative">
-                            <p className='text-lg '>{products.name}</p>
+                            <p className='text-xl'>{products.name}</p>
                             <div className="flex items-center gap-2">
                                 <div className="bg-primary px-1 font-medium rounded-sm text-sm text-white flex items-center gap-1">4.3 <BsStarHalf className='text-xs' /></div>
                                 <div className="text-xs  text-primary font-normal">456 Reviews</div>
@@ -132,27 +133,15 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                                 </div>
                                 100% vegetarian
                             </div>
-                            <div className="flex items-center gap-3">
-                                <div className={`border-2 text-sm ${weight === 1 ? 'border-orange-500 text-primary' : 'border-gray-500 text-tatary'} w-16 rounded-full h-16 cursor-pointer flex flex-col items-center justify-center `}>
-                                    1Kg
-                                    <p className='flex items-center'><BiRupee className='text-md' />{products?.price}</p>
+                           <div className="flex items-center gap-2">
+                            <p className="font-light text-sm">Fresh Cake & delicious</p>
+                           </div>
+                            <div className="">
+                                <p className='font-bold'>Weight</p>
+                                <div className="flex gap-2">
+                                    <div className="px-2 h-10 rounded-lg border flex items-center justify-center text-sm">1 Kg</div>
+                                    <div className="px-2 h-10 rounded-lg border flex items-center justify-center text-sm">1.5 Kg</div>
                                 </div>
-                                <div className={`border-2 text-sm ${weight === 2 ? 'border-orange-500 text-primary' : 'border-gray-500 text-tatary'} w-16 rounded-full h-16 cursor-pointer flex flex-col items-center justify-center `}>
-                                    2Kg
-                                    <p className='flex items-center'><BiRupee className='text-md' />{products?.price*2}</p>
-                                </div>
-                                <div className={`border-2 text-sm ${weight === 2 ? 'border-orange-500 text-primary' : 'border-gray-500 text-tatary'} w-16 rounded-full h-16 cursor-pointer flex flex-col items-center justify-center `}>
-                                    3Kg
-                                    <p className='flex items-center'><BiRupee className='text-md' />{products?.price*3}</p>
-                                </div>
-                            </div>
-                            {/* sds */}
-                            <div className="flex gap-3">
-                                <input type="number" className='outline-none border w-1/2 px-2 py-2 rounded-md' placeholder='Enter delivery pin code' />
-                                <input type="date" className='outline-none border w-1/2 px-2 py-2 rounded-md' placeholder='Enter delivery pin code' />
-                            </div>
-                            <div className="flex gap-3">
-                                <input type="text" className='outline-none border w-full px-2 py-2 rounded-md' placeholder='Enter message on cake' />
                             </div>
                             {/* sds */}
                             <div className="w-full">
@@ -161,7 +150,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                             </div>
                             <div className="w-full">
                                 <p className='font-medium to-gray-700'>Product Deatils</p>
-                                 <div className='text-sm list-disc pl-4' dangerouslySetInnerHTML={{ __html: products.key_features }}/>
+                                 <div className='text-xs list-disc pl-6' dangerouslySetInnerHTML={{ __html: products.key_features }}/>
                             </div>
                             <div className="w-full ">
                                 <p className=' font-medium text-tatary text-sm'>Seller : {products?.created_by?.name}</p>
@@ -169,7 +158,7 @@ const ProductDetails: FC<ProductDetailsProps> = () => {
                             <div className="block md:hidden">
                                 <div className="w-full bg-white fixed md:sticky bottom-0 h-14 items-center flex gap-4 left-0 px-2 md:px-0 z-10">
                                     <button onClick={() => CartItem(products._id)} className='uppercase w-full font-medium h-10 text-white bg-primary'>Add to Cart</button>
-                                    <button onClick={() => wishlist(products._id)} className='uppercase w-full font-medium h-10 text-white bg-secondary'>Wish list</button>
+                                    <button onClick={() => wishlist(products._id)} className='uppercase w-full font-medium h-10 text-white bg-secondary'>Buy Now</button>
                                 </div>
                             </div>
                         </div>

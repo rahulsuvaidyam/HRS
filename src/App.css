@@ -25,7 +25,9 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+*{
+  @apply font-primary tracking-wide
+}
 :root{
   --color-bg-primary: #111827;
   --color-bg-secondary: #E87436;

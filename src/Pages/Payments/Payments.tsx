@@ -9,7 +9,8 @@ interface PaymentsProps { }
 
 const Payments: FC<PaymentsProps> = () => {
     const [products, setProducts] = useState([])
-    const { isRender, setIsRender } = useContext(DataContext)
+    
+    const { isRender } = useContext(DataContext)
 
     useEffect(() => {
         const GetCarts = async () => {

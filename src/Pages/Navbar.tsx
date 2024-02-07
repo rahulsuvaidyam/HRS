@@ -50,7 +50,7 @@ const Navbar: FC<NavbarProps> = () => {
                     <Link to={'/'} className='text-xl font-medium text-secondary cursor-pointer'>HRS</Link>
                    <GlobalSearch/>
                     <div className="flex items-center gap-3 md:gap-6">
-                        {userDetails?.role === 'SELLER' ? '' : <Link to='/becomeseller' className='border hidden md:block px-3 py-[7px] font-medium text-sm hover:bg-primary hover:text-white transition-all'>BECOME A SELLER</Link>}
+                        {userDetails?.role === 'SELLER' ? '' : <Link to='/becomeseller' className='border hidden md:block px-3 py-[7px] font-medium text-sm hover:bg-primary hover:text-white transition-all truncate'>BECOME A SELLER</Link>}
                         {userDetails?.role === 'SELLER' || userDetails?.role === 'ADMIN' ? <Link to='/dashboard' className='border px-5 py-[7px] font-medium text-sm hidden md:block bg-white hover:bg-primary hover:text-white transition-all'>Dashboard</Link> : ''}
                         {userDetails?.name ? <>
                             <Menu as="div" className="relative order-2 md:order-1 pt-2 md:pt-0 inline-block text-left">
